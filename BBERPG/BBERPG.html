@@ -1,0 +1,202 @@
+<div class="main">
+
+    <!-- LOGO SECTION -->
+    <div class="logo section"></div>
+
+    <!-- NAME SECTION -->
+    <div class="name section">
+        <div class="section-small flex-center">
+            <label>NAME: </label>
+            <input name="attr_character_name" type="text">
+        </div>
+        <div class="section-small flex-center">
+            <label>ORDER: </label>
+            <input name="attr_order" type="text">
+        </div>
+    </div>
+
+    <!-- MAIN STAT SECTION -->
+
+    <div class="stats section">
+
+        <div>
+            <button name="roll_actionrating" type="roll" value="&{template:default} {{name=Actionrating}} {{Result=[[d10+(@{speed_bonus})]]}} &{tracker}"><span>Action Rating</span></button>
+        </div>
+
+        <div class="stat-block flex-center">
+            <label>Strength</label>
+            <input name="attr_strength" type="number" value="">
+            <input type="number" name="attr_strength_bonus" value="floor((@{Strength}/10))" disabled="true" />
+            <!--      <span name="attr_strength_bonus"></span> -->
+            <button name="roll_strength" type="roll" value="&{template:default} {{name=Strength}} {{Result=[[2d10+(@{Strength_bonus})]]}}"></button>
+        </div>
+
+        <div class="stat-block flex-center">
+            <label>Stamina</label>
+            <input name="attr_stamina" type="number" value="">
+            <input type="number" name="attr_stamina_bonus" value="floor((@{Stamina}/10))" disabled="true" />
+            <!--      <span name="attr_stamina_bonus"></span> -->
+            <button name="roll_stamina" type="roll" value="&{template:default} {{name=Stamina}} {{Result=[[2d10+(@{Stamina_bonus})]]}}"></button>
+        </div>
+
+        <div class="stat-block flex-center">
+            <label>Speed</label>
+            <input name="attr_speed" type="number" value="">
+            <span name="attr_speed_bonus"></span>
+            <button name="roll_speed" type="roll" value="&{template:default} {{name=Speed}} {{Result=[[2d10+(@{Speed_bonus})]]}}"></button>
+        </div>
+
+        <div class="stat-block flex-center">
+            <label>Deftness</label>
+            <input name="attr_deftness" type="number" value="">
+            <span name="attr_deftness_bonus"></span>
+            <button name="roll_deftness" type="roll" value="&{template:default} {{name=Deftness}} {{Result=[[2d10+(@{Deftness_bonus})]]}}"></button>
+        </div>
+
+        <div class="stat-block flex-center">
+            <label>Appearance</label>
+            <input name="attr_appearance" type="number" value="">
+            <span name="attr_appearance_bonus"></span>
+            <button name="roll_appearance" type="roll" value="&{template:default} {{name=Appearance}} {{Result=[[2d10+(@{Appearance_bonus})]]}}"></button>
+        </div>
+
+        <div class="stat-block flex-center">
+            <label>Intelligence</label>
+            <input name="attr_intelligence" type="number" value="">
+            <span name="attr_intelligence_bonus"></span>
+            <button name="roll_intelligence" type="roll" value="&{template:default} {{name=Intelligence}} {{Result=[[d20+(@{Intelligence_bonus})]]}}"></button>
+        </div>
+
+        <div class="stat-block flex-center">
+            <label>Acuity</label>
+            <input name="attr_acuity" type="number" value="">
+            <span name="attr_acuity_bonus"></span>
+            <button name="roll_acuity" type="roll" value="&{template:default} {{name=Acuity}} {{Result=[[2d10+(@{acuity_bonus})]]}}"></button>
+        </div>
+
+        <div class="stat-block flex-center">
+            <label>Temperence</label>
+            <input name="attr_temperence" type="number" value="">
+            <span name="attr_temperence_bonus"></span>
+            <button name="roll_temperence" type="roll" value="&{template:default} {{name=Temperence}} {{Result=[[2d10+(@{temperence_bonus})]]}}"></button>
+        </div>
+
+        <div class="stat-block flex-center">
+            <label>Valor</label>
+            <input name="attr_valor" type="number" value="">
+            <span name="attr_valor_bonus"></span>
+            <button name="roll_valor" type="roll" value="&{template:default} {{name=Valor}} {{Result=[[2d10+(@{Valor_bonus})]]}}"></button>
+        </div>
+
+        <div class="stat-block flex-center">
+            <label>Magnetism</label>
+            <input name="attr_magnetism" type="number" value="">
+            <span name="attr_magnetism_bonus"></span>
+            <button name="roll_magnetism" type="roll" value="&{template:default} {{name=Magnetism}} {{Result=[[2d10+(@{Magnetism_bonus})]]}}"></button>
+        </div>
+
+        <div class="stat-block flex-center">
+            <label>Aspect</label>
+            <input name="attr_aspect" type="number" value="">
+            <span name="attr_aspect_bonus"></span>
+            <button name="roll_aspect" type="roll" value="&{template:default} {{name=Aspect}} {{Result=[[2d10+(@{Aspect_bonus})]]}}"></button>
+        </div>
+
+
+        <div class="stat-block flex-center">
+            <label>Mana</label>
+            <input name="attr_mana" type="number" value="">
+            <span name="attr_mana_bonus"></span>
+            <button name="roll_mana" type="roll" value="&{template:default} {{name=Mana}} {{Result=[[2d10+(@{Mana_bonus})]]}}"></button>
+        </div>
+
+        <div class="stat-block flex-center">
+            <label>Psyche</label>
+            <input name="attr_psyche" type="number" value="">
+            <span name="attr_psyche_bonus"></span>
+            <button name="roll_psyche" type="roll" value="&{template:default} {{name=Psyche}} {{Result=[[2d10+(@{Psyche_bonus})]]}}"></button>
+        </div>
+    </div>
+
+    <!-- RESISTANCE/WEAKNESS/ADVANTAGE SECTION -->
+    <div class="resistance section flex-center">
+        <div>
+            <label>Resistance/</label>
+            <label>Weakness</label>
+            <hr>
+            <label>Advantage/</label>
+            <label>Disadvantage</label>
+        </div>
+        <div>
+            <input name="attr_resistance1" type="text">
+            <input name="attr_resistance2" type="text">
+            <input name="attr_resistance3" type="text">
+            <input name="attr_resistance4" type="text">
+            <input name="attr_resistance5" type="text">
+        </div>
+    </div>
+
+    <!-- BIO SECTION -->
+    <div class="bio section flex-center flex-middle flex-down">
+        <label>Bio</label>
+        <textarea name="attr_bio" placeholder="Bio"></textarea>
+    </div>
+
+    <!-- GOLD SECTION-->
+    <div class="gold section flex-center">
+        <label>Gold:</label>
+        <input name="attr_gold" type="number" value="10">
+    </div>
+
+    <!-- LOAD SECTION -->
+    <div class="load section flex-center flex-middle flex-down">
+        <label>Load</label>
+        <span>
+          <input name="attr_attack_name" type="text" placeholder="Attack/Weapon Name"> 
+          <input name="attr_attack_bonus" type="number" value=""> 
+          <input name="attr_attack_damage" type="text" value="1d6" class="small">
+          <button name="roll_attack" type="roll" value="&{template:default} {{name=@{attack_name}}} {{Attack=[[d20+(@{attack_bonus})]]}} {{Damage=[[@{attack_damage}]]}}" class ="small"></button>
+        </span>
+        <textarea name="attr_load" placeholder="Load"></textarea>
+    </div>
+
+    <!-- SKILLED WITH SECTION -->
+    <div class="skilled section flex-center">
+        <label>Skilled with: </label>
+        <input name="attr_skilled_with" type="text">
+    </div>
+
+    <!-- ORDER SKILL SECTION -->
+    <div class="order-skills section flex-center flex-down">
+        <label>Order Skills</label>
+        <textarea name="attr_order_skills" placeholder="Order Skills"></textarea>
+    </div>
+
+</div>
+
+<!--
+    <input name="strength_bonus" type="hidden" value="0">
+    <input name="stamina_bonus" type="hidden" value="0">
+    <input name="speed_bonus" type="hidden" value="0">
+    <input name="deftness_bonus" type="hidden" value="0">
+    <input name="appearance_bonus" type="hidden" value="0">
+    <input name="intelligence_bonus" type="hidden" value="0">
+    <input name="acuity_bonus" type="hidden" value="0">
+    <input name="temperence_bonus" type="hidden" value="0">
+    <input name="valor_bonus" type="hidden" value="0">
+    <input name="magnetism_bonus" type="hidden" value="0">
+    <input name="aspect_bonus" type="hidden" value="0">
+    <input name="mana_bonus" type="hidden" value="0">
+    <input name="psyche_bonus" type="hidden" value="0"> 
+    -->
+
+<!-- ---------------------------SHEET WORKERS----------------- -->
+
+<script type="text/worker">
+
+    // const int = score => parseInt(score, 10) || 0; // Auto-calculates & updates 'Stat Bonus' based on changes to corresponding 'Base Stat', // Attribute bonuses are equal to the tens and hundreds digits of the score // const stats = ["strength", "stamina",
+    "speed", "deftness", "appearance", "intelligence", "acuity", "temperence", "valor", "magnetism", "aspect", "mana", "psyche"]; // stats.forEach(stat => { // on(`change:${stat}`, function(){ // getAttrs([stat], function(values){ // stat_base = parseInt(values.stat);
+    // setAttrs({ // [`attr_${stat}_bonus`]: Math.floor(stat_base/10) // }); // setAttrs({ // [`${stat}_bonus`]: Math.floor(stat_base/10) // }); // }); // }); //}); on("change:acuity", function(){ getAttrs(["Acuity"], function(values){ setAttrs({ Acuity_bonus:
+    Math.floor(values.Acuity / 10) }); });
+
+</script>

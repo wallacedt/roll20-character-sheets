@@ -1,0 +1,375 @@
+/*------------------------------------------------*\
+  #GENERAL
+\*------------------------------------------------*/
+
+
+/* --------- Text ------------- */
+
+span.sheet-bold {
+    font-weight: 800;
+    font-size: medium;
+}
+
+label {
+    margin: 5px 0px 5px 0px;
+    font-size: 1.1em;
+}
+
+
+/* --------- Inputs ------------- */
+
+input[type="text"] {
+    background-color: transparent;
+    border-style: none none solid none;
+    border-color: black;
+}
+
+input[type="number"] {
+    background-color: transparent;
+    border: none;
+}
+
+textarea {
+    background-color: transparent;
+    width: 89%;
+    height: 70%;
+    margin-right: 15px;
+}
+
+input[type="checkbox"].sheet-checkbox {
+    border-style: solid black;
+    border-radius: 0px;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="number"]:focus {
+    background-color: #F6CED8;
+}
+
+
+/* -----Hides up/down buttons on numberfields that don't need them ---*/
+
+input[type=number].sheet-ref::-webkit-inner-spin-button,
+input[type=number].sheet-ref::-webkit-outer-spin-button,
+input[type=number].sheet-txtfield::-webkit-inner-spin-button,
+input[type=number].sheet-txtfield::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number].sheet-ref,
+input[type=number].sheet-txtfield {
+    -moz-appearance: textfield;
+}
+
+
+/* ------- Buttons ---------- */
+
+button[type="roll"]:not(.sheet-small) {
+    color: black;
+    height: 30px;
+    width: 30px;
+    margin-left: 15px;
+}
+
+button[type="roll"]:not(.sheet-small)::before {
+    font-size: 1.4em;
+}
+
+
+/*-----------------------------------------------------------------*\
+    #SECTIONS
+  \*-----------------------------------------------------------------*/
+
+
+/* --------- General Section Styling ------------- */
+
+.sheet-flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.sheet-flex-middle {
+    display: flex;
+    justify-content: center;
+}
+
+.sheet-flex-down {
+    flex-flow: column nowrap;
+}
+
+.sheet-section {
+    padding: 5px;
+    min-height: 90%;
+}
+
+
+/*  ----- Character Sheet Structure -------
+  
+  '.sheet-main' defines the sheet's general structure and dimensions using CSS Grid.
+  
+  It uses 'Grid template areas' to name  each sheet section,
+  so that they can be positioned in the grid easily,
+   while also providing a human-readable overview. */
+
+div.sheet-main {
+    display: grid;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: 200px 250px 85px 250px 100px 200px 220px;
+    grid-template-areas: "logo       name" "stats      bio" "stats      gold" "stats      load" "stats      skilled" "stats      order-skills" "resistance order-skills";
+    grid-gap: 6px;
+    width: 800px;
+    /* Defines the width and height of the sheet */
+    height: 1350px;
+    background-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BBERPGborder.jpg?raw=true);
+    background-size: 800px 1350px;
+    /* Sets the sheet border image to same size as sheet */
+    background-repeat: no-repeat;
+}
+
+
+/* Section-specific CSS is written in a way that removes the need to define classes
+  on each individual   */
+
+
+/* LOGO SECTION */
+
+div.sheet-logo {
+    grid-area: logo;
+    background-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BBERPGlogo.png?raw=true);
+    background-size: 325px 180px;
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+
+/* STATS SECTION */
+
+div.sheet-stats {
+    grid-area: stats;
+    margin-left: 15px;
+}
+
+div.sheet-stats div:first-child {
+    display: flex;
+    align-items: start;
+    height: 45px;
+}
+
+div.sheet-stats div:first-child button {
+    width: 220px;
+    margin-left: 0px;
+}
+
+div.sheet-stats div:first-child span {
+    padding: 0px 0px 5px 5px;
+}
+
+div.sheet-stats div.sheet-stat-block {
+    background-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BBERPGstatblock.jpg?raw=true);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 65px;
+    width: 350px;
+}
+
+div.sheet-stats div.sheet-stat-block label {
+    width: 95px;
+    padding-left: 10px;
+}
+
+div.sheet-stats input,
+div.sheet-stats span {
+    height: 45px;
+    width: 50px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    padding-left: 20px;
+}
+
+div.sheet-stats span {
+    padding-top: 15px;
+    padding-left: 10px;
+}
+
+
+/* RESITANCE SECTION */
+
+div.sheet-resistance {
+    grid-area: resistance;
+    background-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BBERPGblock3.jpg?raw=true);
+    background-size: 320px 190px;
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+div.sheet-resistance label {
+    width: 130px;
+    text-align: center;
+}
+
+div.sheet-resistance div {
+    padding-bottom: 25px;
+}
+
+div.sheet-resistance input {
+    width: 150px;
+    margin: 3px 0px 3px 0px;
+}
+
+div.sheet-resistance hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    width: 120px;
+}
+
+
+/* NAME SECTION */
+
+div.sheet-name {
+    grid-area: name;
+    padding-top: 35px;
+}
+
+div.sheet-name div.sheet-section-small {
+    background-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BBERPGblock1.jpg?raw=true);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 290px;
+}
+
+div.sheet-name label {
+    width: 50px;
+    padding-left: 15px;
+}
+
+div.sheet-name input {
+    width: 180px;
+}
+
+
+/* BIO SECTION */
+
+div.sheet-bio {
+    grid-area: bio;
+    background-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BBERPGblock3.jpg?raw=true);
+    background-size: 370px 250px;
+    background-repeat: no-repeat;
+    padding-right: 25px;
+}
+
+div.sheet-bio label {
+    width: 60px;
+    margin-top: 3px;
+}
+
+div.sheet-bio textarea {
+    height: 80%;
+}
+
+
+/* GOLD SECTION */
+
+div.sheet-gold {
+    grid-area: gold;
+    background-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BBERPGblock1.jpg?raw=true);
+    background-size: 370px 80px;
+    background-repeat: no-repeat;
+    padding-bottom: 20px;
+}
+
+div.sheet-gold label {
+    width: 50px;
+    margin-left: 15px;
+}
+
+div.sheet-gold input[type=number] {
+    width: 275px;
+}
+
+
+/* LOAD SECTION */
+
+div.sheet-load {
+    grid-area: load;
+    background-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BBERPGblock3.jpg?raw=true);
+    background-size: 370px 250px;
+    background-repeat: no-repeat;
+    padding-right: 25px;
+}
+
+div.sheet-load label {
+    width: 60px;
+    margin-top: 3px;
+}
+
+div.sheet-load input[type="text"]:first-child {
+    width: 150px;
+}
+
+div.sheet-load input[type="text"].sheet-small {
+    width: 50px;
+}
+
+div.sheet-load textarea {
+    margin: 3px 15px 0px 0px;
+    height: 60%;
+}
+
+div.sheet-load button.sheet-small {
+    color: black;
+}
+
+
+/* SKILLED SECTION */
+
+div.sheet-skilled {
+    grid-area: skilled;
+    align-items: start;
+    background-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BBERPGblock1.jpg?raw=true);
+    background-size: 370px 80px;
+    background-repeat: no-repeat;
+    padding-bottom: 20px;
+}
+
+div.sheet-skilled label {
+    width: 90px;
+    margin-left: 15px;
+    margin-top: 25px;
+}
+
+div.sheet-skilled input {
+    width: 220px;
+    margin-top: 20px;
+}
+
+
+/* ORDER SKILL SECTION */
+
+div.sheet-order-skills {
+    grid-area: order-skills;
+    background-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BBERPGblock3.jpg?raw=true);
+    background-size: 370px 400px;
+    background-repeat: no-repeat;
+    padding-right: 25px;
+}
+
+div.sheet-order-skills label {
+    width: 120px;
+    margin-top: 12px;
+}
+
+div.sheet-order-skills textarea {
+    height: 75%;
+}
