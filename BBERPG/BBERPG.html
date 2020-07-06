@@ -1,202 +1,2180 @@
-<div class="main">
 
-    <!-- LOGO SECTION -->
-    <div class="logo section"></div>
+<!-- <div class="main"> -->
+    
+<div class="sheet-overall-wrapper">
+	<!-- PC / NPC toggle -->
+	<input class="sheet-is-npc" type="checkbox" name="attr_is_npc" value="1"><span class="sheet-is-npc-tab"></span>
+	<div class="sheet-row">&nbsp;</div>
+	<div class="sheet-padb">
+		<div class="sheet-row">
+			<div class="sheet-col-1-9"><img src="https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BBERPGlogo.png?raw=true" alt="BBERPG" align="middle" width="100" height="50">
+		    </div>
+			<div class="sheet-col-2-9  sheet-padr sheet-center">
+                <button type="roll" class="sheet-initiative" name="roll_Actionrating" value="&{template:default} {{@{character_name}}} {{name=Action Rating}} {{Result=[[d10+@{current_speed} &{tracker} ]]}}"></button>
+                <span class="small-label">Action Rating</span></div> 
+            <div class="sheet-col-1-11 sheet-small-label sheet-center">
+				<input class="sheet-underlined sheet-center" type="text" name="attr_sheet_version" value="1.0" disabled="disabled" />
+				<br/>Sheet Version</div>
+			<div class="sheet-col-1-4 sheet-small-label sheet-center">
+				<input class="sheet-underlined sheet-center" type="text" name="attr_character_name">
+				<br/>Character Name</div>
+			<div class="sheet-col-1-5 sheet-small-label sheet-center">
+				<input class="sheet-underlined sheet-center" type="text" name="attr_race">
+				<br/>Race</div>
+			<div class="sheet-col-1-12 sheet-small-label sheet-center">
+				<input class="sheet-underlined sheet-center" type="text" name="attr_level">
+				<br/>Level</div>
+		</div>
+	</div>
+	<div class="sheet-player">
+		<input type="radio" name="attr_tab" class="sheet-tab sheet-tab1" value="1" title="Core Stats" checked="checked" />
+		<span class="sheet-tab sheet-tab1">Core Stats</span>
+		<input type="radio" name="attr_tab" class="sheet-tab sheet-tab2" value="2" />
+		<span class="sheet-tab sheet-tab2">Skills</span>
+		<input type="radio" name="attr_tab" class="sheet-tab sheet-tab3" value="3" />
+		<span class="sheet-tab sheet-tab3">Background</span>
+		<input type="radio" name="attr_tab" class="sheet-tab sheet-tab4" value="4" />
+		<span class="sheet-tab sheet-tab4">Class</span>
+		<input type="radio" name="attr_tab" class="sheet-tab sheet-tab5" value="5" />
+		<span class="sheet-tab sheet-tab5">Weapons</span>
+		<input type="radio" name="attr_tab" class="sheet-tab sheet-tab6" value="6" />
+		<span class="sheet-tab sheet-tab6">Spellbook</span>
+		<input type="radio" name="attr_tab" class="sheet-tab sheet-tab8" value="8" />
+		<span class="sheet-tab sheet-tab8">Armour</span>
+		<input type="radio" name="attr_tab" class="sheet-tab sheet-tab7" value="7" />
+		<span class="sheet-tab sheet-tab7">Inventory</span>
+		<input type="radio" name="attr_tab" class="sheet-tab sheet-tab99" value="99" />
+		<span class="sheet-tab sheet-tab99">Show All</span>
+		<span class="sheet-spacer"></span>
+		
+		<div class="sheet-section-core">
+            <div class="sheet-row">
+				<div class="sheet-col-1-2 sheet-padr">
+				    
+				    <!-- MAIN ATTRIBUTE SECTION -->
+				    
+					<h4 class="sheet-center">Attributes <span class="sheet-pictos">U</span></h4>
+					<div class="sheet-row sheet-sub-header">
+						<div class="sheet-col-1-7 sheet-center sheet-small-label">Score</div>
+						<div class="sheet-col-1-3 sheet-center sheet-small-label">&nbsp;</div>
+						<div class="sheet-col-1-7 sheet-center sheet-small-label">Rating</div>
+						<div class="sheet-col-1-7 sheet-center sheet-small-label">Mod</div>
+						<div class="sheet-col-1-7 sheet-center sheet-small-label">Check</div>
+					</div>
+					<div class="sheet-row">&nbsp;</div>
+					<div class="sheet-row">
+						<div class="sheet-col-1-7">
+							<input type="number" name="attr_strength" step="1" value="0" />
+							<input type="hidden" name="attr_strength_rating_store" value="0" />
+						</div>
+						<div class="sheet-col-1-3 sheet-core-stat-label">Strength</div>
+             			<div class="sheet-col-1-7">
+							<input type="number" name="attr_strength_rating" value="@{strength_rating_store}" disabled="true" title="1/10 of Strength, dropping any remainder"/>
+						</div>
+						<div class="sheet-col-1-7">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_strength_mod" value="0" step="1">
+						</div>
+						<div class="sheet-col-1-7 sheet-center sheet-padb">
+							<button type="roll" class="sheet-core-save" name="roll_Strength_Check" value="&{template:default} {{@{character_name}}} {{name=Strength Check}} {{Result=[[2d10+@{Strength_rating}+@{Strength_mod}]]}}"></button>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div class="sheet-col-1-7">
+							<input type="number" name="attr_stamina" step="1" value="0" />
+							<input type="hidden" name="attr_stamina_rating_store" value="0" />
+						</div>
+						<div class="sheet-col-1-3 sheet-core-stat-label">Stamina</div>
+             			<div class="sheet-col-1-7">
+							<input type="number" name="attr_stamina_rating" value="@{stamina_rating_store}" disabled="true" title="1/10 of Stamina, dropping any remainder"/>
+						</div>
+						<div class="sheet-col-1-7">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_stamina_mod" value="0" step="1">
+						</div>
+						<div class="sheet-col-1-7 sheet-center sheet-padb">
+							<button type="roll" class="sheet-core-save" name="roll_Stamina_Check" value="&{template:default} {{@{character_name}}} {{name=Stamina Check}} {{Result=[[2d10+@{Stamina_rating}+@{Stamina_mod}]]}}"></button>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div class="sheet-col-1-7">
+							<input type="number" name="attr_speed" step="1" value="0" />
+							<input type="hidden" name="attr_speed_rating_store" value="0" />
+						</div>
+						<div class="sheet-col-1-3 sheet-core-stat-label">Speed</div>
+             			<div class="sheet-col-1-7">
+							<input type="number" name="attr_speed_rating" value="@{speed_rating_store}" disabled="true" title="1/10 of Speed, dropping any remainder"/>
+						</div>
+						<div class="sheet-col-1-7">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_speed_mod" value="0" step="1">
+						</div>
+						<div class="sheet-col-1-7 sheet-center sheet-padb">
+							<button type="roll" class="sheet-core-save" name="roll_Speed_Check" value="&{template:default} {{@{character_name}}} {{name=Speed Check}} {{Result=[[2d10+@{Speed_rating}+@{Speed_mod}]]}}"></button>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div class="sheet-col-1-7">
+							<input type="number" name="attr_deftness" step="1" value="0" />
+							<input type="hidden" name="attr_deftness_rating_store" value="0" />
+						</div>
+						<div class="sheet-col-1-3 sheet-core-stat-label">Deftness</div>
+             			<div class="sheet-col-1-7">
+							<input type="number" name="attr_deftness_rating" value="@{deftness_rating_store}" disabled="true" title="1/10 of Deftness, dropping any remainder"/>
+						</div>
+						<div class="sheet-col-1-7">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_deftness_mod" value="0" step="1">
+						</div>
+						<div class="sheet-col-1-7 sheet-center sheet-padb">
+							<button type="roll" class="sheet-core-save" name="roll_Deftness_Check" value="&{template:default} {{@{character_name}}} {{name=Deftness Check}} {{Result=[[2d10+@{Deftness_rating}+@{Deftness_mod}]]}}"></button>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div class="sheet-col-1-7">
+							<input type="number" name="attr_appearance" step="1" value="0" />
+							<input type="hidden" name="attr_appearance_rating_store" value="0" />
+						</div>
+						<div class="sheet-col-1-3 sheet-core-stat-label">Appearance</div>
+             			<div class="sheet-col-1-7">
+							<input type="number" name="attr_appearance_rating" value="@{appearance_rating_store}" disabled="true" title="1/10 of Appearance, dropping any remainder"/>
+						</div>
+						<div class="sheet-col-1-7">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_appearance_mod" value="0" step="1">
+						</div>
+						<div class="sheet-col-1-7 sheet-center sheet-padb">
+							<button type="roll" class="sheet-core-save" name="roll_Appearance_Check" value="&{template:default} {{@{character_name}}} {{name=Appearance Check}} {{Result=[[2d10+@{Appearance_rating}+@{Appearance_mod}]]}}"></button>
+						</div>
+					</div>
+					<hr>
+					<div class="sheet-row">
+						<div class="sheet-col-1-7">
+							<input type="number" name="attr_intelligence" step="1" value="0" />
+							<input type="hidden" name="attr_intelligence_rating_store" value="0" />
+						</div>
+						<div class="sheet-col-1-3 sheet-core-stat-label">Intelligence</div>
+             			<div class="sheet-col-1-7">
+							<input type="number" name="attr_intelligence_rating" value="@{intelligence_rating_store}" disabled="true" title="1/10 of Intelligence, dropping any remainder"/>
+						</div>
+						<div class="sheet-col-1-7">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_intelligence_mod" value="0" step="1">
+						</div>
+						<div class="sheet-col-1-7 sheet-center sheet-padb">
+							<button type="roll" class="sheet-core-save" name="roll_Intelligence_Check" value="&{template:default} {{@{character_name}}} {{name=Intelligence Check}} {{Result=[[2d10+@{Intelligence_rating}+@{Intelligence_mod}]]}}"></button>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div class="sheet-col-1-7">
+							<input type="number" name="attr_acuity" step="1" value="0" />
+							<input type="hidden" name="attr_acuity_rating_store" value="0" />
+						</div>
+						<div class="sheet-col-1-3 sheet-core-stat-label">Acuity</div>
+             			<div class="sheet-col-1-7">
+							<input type="number" name="attr_acuity_rating" value="@{acuity_rating_store}" disabled="true" title="1/10 of Acuity, dropping any remainder"/>
+						</div>
+						<div class="sheet-col-1-7">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_acuity_mod" value="0" step="1">
+						</div>
+						<div class="sheet-col-1-7 sheet-center sheet-padb">
+							<button type="roll" class="sheet-core-save" name="roll_Acuity_Check" value="&{template:default} {{@{character_name}}} {{name=Acuity Check}} {{Result=[[2d10+@{Acuity_rating}+@{Acuity_mod}]]}}"></button>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div class="sheet-col-1-7">
+							<input type="number" name="attr_temperence" step="1" value="0" />
+							<input type="hidden" name="attr_temperence_rating_store" value="0" />
+						</div>
+						<div class="sheet-col-1-3 sheet-core-stat-label">Temperence</div>
+             			<div class="sheet-col-1-7">
+							<input type="number" name="attr_temperence_rating" value="@{temperence_rating_store}" disabled="true" title="1/10 of Temperence, dropping any remainder"/>
+						</div>
+						<div class="sheet-col-1-7">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_temperence_mod" value="0" step="1">
+						</div>
+						<div class="sheet-col-1-7 sheet-center sheet-padb">
+							<button type="roll" class="sheet-core-save" name="roll_Temperence_Check" value="&{template:default} {{@{character_name}}} {{name=Temperence Check}} {{Result=[[2d10+@{Temperence_rating}+@{Temperence_mod}]]}}"></button>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div class="sheet-col-1-7">
+							<input type="number" name="attr_valor" step="1" value="0" />
+							<input type="hidden" name="attr_valor_rating_store" value="0" />
+						</div>
+						<div class="sheet-col-1-3 sheet-core-stat-label">Valor</div>
+             			<div class="sheet-col-1-7">
+							<input type="number" name="attr_valor_rating" value="@{valor_rating_store}" disabled="true" title="1/10 of Valor, dropping any remainder"/>
+						</div>
+						<div class="sheet-col-1-7">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_valor_mod" value="0" step="1">
+						</div>
+						<div class="sheet-col-1-7 sheet-center sheet-padb">
+							<button type="roll" class="sheet-core-save" name="roll_Valor_Check" value="&{template:default} {{@{character_name}}} {{name=Valor Check}} {{Result=[[2d10+@{Valor_rating}+@{Valor_mod}]]}}"></button>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div class="sheet-col-1-7">
+							<input type="number" name="attr_magnetism" step="1" value="0" />
+							<input type="hidden" name="attr_magnetism_rating_store" value="0" />
+						</div>
+						<div class="sheet-col-1-3 sheet-core-stat-label">Magnetism</div>
+             			<div class="sheet-col-1-7">
+							<input type="number" name="attr_magnetism_rating" value="@{magnetism_rating_store}" disabled="true" title="1/10 of Magnetism, dropping any remainder"/>
+						</div>
+						<div class="sheet-col-1-7">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_magnetism_mod" value="0" step="1">
+						</div>
+						<div class="sheet-col-1-7 sheet-center sheet-padb">
+							<button type="roll" class="sheet-core-save" name="roll_Magnetism_Check" value="&{template:default} {{@{character_name}}} {{name=Magnetism Check}} {{Result=[[2d10+@{Magnetism_rating}+@{Magnetism_mod}]]}}"></button>
+						</div>
+					</div>
+					<hr>
+					<div class="sheet-row">
+						<div class="sheet-col-1-7">
+							<input type="number" name="attr_aspect" step="1" value="0" />
+							<input type="hidden" name="attr_aspect_rating_store" value="0" />
+						</div>
+						<div class="sheet-col-1-3 sheet-core-stat-label">Aspect</div>
+             			<div class="sheet-col-1-7">
+							<input type="number" name="attr_aspect_rating" value="@{aspect_rating_store}" disabled="true" title="1/10 of Aspect, dropping any remainder"/>
+						</div>
+						<div class="sheet-col-1-7">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_aspect_mod" value="0" step="1">
+						</div>
+						<div class="sheet-col-1-7 sheet-center sheet-padb">
+							<button type="roll" class="sheet-core-save" name="roll_Aspect_Check" value="&{template:default} {{@{character_name}}} {{name=Aspect Check}} {{Result=[[2d10+@{Aspect_rating}+@{Aspect_mod}]]}}"></button>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div class="sheet-col-1-7">
+							<input type="number" name="attr_mana" step="1" value="0" />
+							<input type="hidden" name="attr_mana_rating_store" value="0" />
+						</div>
+						<div class="sheet-col-1-3 sheet-core-stat-label">Mana</div>
+             			<div class="sheet-col-1-7">
+							<input type="number" name="attr_mana_rating" value="@{mana_rating_store}" disabled="true" title="1/10 of Mana, dropping any remainder"/>
+						</div>
+						<div class="sheet-col-1-7">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_mana_mod" value="0" step="1">
+						</div>
+						<div class="sheet-col-1-7 sheet-center sheet-padb">
+							<button type="roll" class="sheet-core-save" name="roll_Mana_Check" value="&{template:default} {{@{character_name}}} {{name=Mana Check}} {{Result=[[2d10+@{Mana_rating}+@{Mana_mod}]]}}"></button>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div class="sheet-col-1-7">
+							<input type="number" name="attr_psyche" step="1" value="0" />
+							<input type="hidden" name="attr_psyche_rating_store" value="0" />
+						</div>
+						<div class="sheet-col-1-3 sheet-core-stat-label">Psyche</div>
+             			<div class="sheet-col-1-7">
+							<input type="number" name="attr_psyche_rating" value="@{psyche_rating_store}" disabled="true" title="1/10 of Psyche, dropping any remainder"/>
+						</div>
+						<div class="sheet-col-1-7">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_psyche_mod" value="0" step="1">
+						</div>
+						<div class="sheet-col-1-7 sheet-center sheet-padb">
+							<button type="roll" class="sheet-core-save" name="roll_Psyche_Check" value="&{template:default} {{@{character_name}}} {{name=Psyche Check}} {{Result=[[2d10+@{Psyche_rating}+@{Psyche_mod}]]}}"></button>
+						</div>
+					</div>
+				</div>
+				<div class="sheet-col-1-2 sheet-padr">
+					<h4 class="sheet-center">Resilience <span class="sheet-pictos">k</span></span></h4>
+					<div class="sheet-row sheet-padb">
+						<div class="sheet-row">
+							<div class="sheet-col-1-3 sheet-small-label sheet-center">
+								<input class="sheet-underlined" type="number" name="attr_resilience" step="1" value="12">
+								<br/>Base</div>
+							<div class="sheet-col-1-3 sheet-small-label sheet-center">
+								<input class="sheet-underlined" type="number" name="attr_resilience_mod" value="0" step="1">
+								<br/>Bonus</div>
+							<div class="sheet-col-1-3 sheet-small-label sheet-center">
+								<input class="sheet-underlined" type="number" name="attr_total_resilience" disabled="true" value="@{resilience}+@{resilience_mod}+@{stamina_rating}+@{stamina_mod}">
+						        <br/>Total</div>
+						</div>
+					</div>
+					<div class="sheet-row sheet-padb sheet-center">
+						<div class="sheet-col-1-2 sheet-small-label">
+							<input class="sheet-underlined" type="number" name="attr_current_resilience" step="1" value="12">
+					        <br/><span class=sheet-bold> Current Resilience </span></div>
+        			</div>
+        			<div class="sheet-row">&nbsp;</div>
+        			<h4 class="sheet-center">Current Scores <span class="sheet-pictos">3</span></h4>
+					<p class="sheet-small-note">Keep track of metaphysical attributes used to call on deific aspects, cast spells, and manifest psionic faculties.</p>
+					<div class="sheet-row sheet-center">
+						<div class="sheet-col-1-4 sheet-small-label sheet-center">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_current_aspect" step="1" value="0">
+							<br/>Current Aspect</div>
+						<div class="sheet-col-1-4 sheet-small-label sheet-center">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_current_mana" step="1" value="0">
+							<br/>Current Mana</div>
+						<div class="sheet-col-1-4 sheet-small-label sheet-center">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_current_psyche" step="1" value="0">
+							<br/>Current Psyche</div>
+					</div>
+					<div class="sheet-row">&nbsp;</div>
+					<h4 class="sheet-center">Karma <span class="sheet-pictos">0</span></span></h4>
+					<div class="sheet-row sheet-center sheet-padb" title="Karma is awarded by the GM and affects chance events. Karma can also be used to change opponent die rolls to zero.">
+						<div class="sheet-row">
+							<div class="sheet-col-1-4 sheet-small-label sheet-center">
+								<input class="sheet-underlined" type="number" name="attr_karma" step="1" value="10">
+								<input type="hidden" name="attr_karma_rating_store" value="1" />
+								<br/>Score</div>
+							<div class="sheet-col-1-4 sheet-small-label sheet-center">
+								<input class="sheet-underlined" type="number" name="attr_karma_mod" value="0" step="1">
+								<br/>Bonus</div>
+							<div class="sheet-col-1-4 sheet-small-label sheet-center">
+								<input class="sheet-underlined" type="number" name="attr_karma_rating" disabled="true" value="@{karma_rating_store}+@{karma_mod}">
+						        <br/>Rating</div>
+						</div>
+					</div>
+					<div class="sheet-row">&nbsp;</div>
+				    <h4 class="sheet-center">Movement <span class="sheet-pictos">1</span></h4>
+					<div class="sheet-row sheet-padb sheet-center">
+						<div class="sheet-col-1-4 sheet-padl sheet-small-label sheet-center">
+							<input class="sheet-underlined sheet-center" type="number" name="attr_move" value="10" min="0" step="1">
+							<br/>Move (Hurry)</div>
+						<div class="sheet-col-1-4 sheet-padl sheet-small-label sheet-center">
+							<br/>&nbsp;</div>
+						<div class="sheet-col-1-4 sheet-padl sheet-small-label sheet-center" title="Current Speed may be modified by armor penalties and adds to Action Rating Rolls.">
+							<input class="sheet-underlined sheet-center" type="number" disabled="true" name="attr_current_speed" value="@{speed_rating}+@{speed_mod}">
+							<br/>Current Speed</div>
+					</div>
+					<div class="sheet-row">&nbsp;</div>
+					<h4 class="sheet-center">Achievement Point Tracker <span class="sheet-pictos-three">d</span></h4>
+					<div class="sheet-row sheet-padb sheet-center">
+						<div class="sheet-col-1-4 sheet-small-label sheet-center" title="APs are awarded by the GM.  One AP can be saved between awards.">
+							<input class="sheet-underlined" type="number" name="attr_unused_achievement" value="0" step="1">
+							<br/>Unused APs</div>
+						<div class="sheet-col-1-2 sheet-small-label sheet-center" title="Check boxes to track APs that are successfully applied. A new level is gained after successfully applying ten APs.">
+							<input class="sheet-checkbox" type="checkbox" name="attr_AP1">
+							<input class="sheet-checkbox" type="checkbox" name="attr_AP2">
+							<input class="sheet-checkbox" type="checkbox" name="attr_AP3">
+							<input class="sheet-checkbox" type="checkbox" name="attr_AP4">
+							<input class="sheet-checkbox" type="checkbox" name="attr_AP5">
+							<span>&nbsp;</span>
+							<input class="sheet-checkbox" type="checkbox" name="attr_AP6">
+							<input class="sheet-checkbox" type="checkbox" name="attr_AP7">
+							<input class="sheet-checkbox" type="checkbox" name="attr_AP8">
+							<input class="sheet-checkbox" type="checkbox" name="attr_AP9">
+							<input class="sheet-checkbox" type="checkbox" name="attr_AP10">
+							<br/>Applied APs</div>
+					</div>
+					<div class="sheet-row">&nbsp;</div>
+					<h4 class="sheet-center">Agression <span class="sheet-pictos">e</span></span></h4>
+					<div class="sheet-row sheet-padb" title="Aggression modifier applies to all attack ratings.">
+						<div class="sheet-row">
+							<div class="sheet-col-1-3 sheet-small-label sheet-center">
+							    <input type="hidden" name="attr_aggression_rating_store" value="0" />
+								<input class="sheet-underlined" type="number" name="attr_aggression" disabled="true" value="@{aggression_rating_store}">
+								<br/>Modifier</div>
+							<div class="sheet-col-1-3 sheet-small-label sheet-center">
+								<input class="sheet-underlined" type="number" name="attr_aggression_mod" value="0" step="1">
+								<br/>Bonus</div>
+							<div class="sheet-col-1-3 sheet-small-label sheet-center">
+								<input class="sheet-underlined" type="number" name="attr_total_aggression" disabled="true" value="@{aggression_rating_store}+@{aggression_mod}">
+						        <br/>Total</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr/>
+		</div>
+				    
+	    <!-- SKILLS SECTION -->
+				    
+		<div class="sheet-section-skills">
+		    <h4 class="sheet-center">Skills <span class="sheet-pictos">x</span></h4>
+			<div class="sheet-row">
+				<div class="sheet-col-1-2 sheet-padr">
+					<div class="sheet-row sheet-sub-header">
+						<div class="sheet-col-1-4 sheet-center sheet-small-label">Combat Skill</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Score &nbsp;</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Rating &nbsp;</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Stat Mod</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Mod</div>
+						<div class="sheet-col-1-10 sheet-center sheet-small-label">Check</div>
+						<div class="sheet-col-1-12 sheet-center sheet-small-label">Masteries</div>
+					</div>
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Berserk</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_berserk" step="1" value="0" />
+    						<input type="hidden" name="attr_berserk_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_berserk_rating" value="@{berserk_rating_store}" disabled="true" title="1/10 of Berserk, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_berserk_stat_mod" disabled="true" value="-(@{temperence_rating_store}+@{temperence_mod})" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_berserk_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Berserk_Check" value="&{template:default} {{@{character_name}}} {{name=Berserk Check}} {{Result=[[2d10+@{berserk_rating}+@{berserk_stat_mod}+@{berserk_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_berserk_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Chi</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_chi_skill" step="1" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center">
+    						<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Current Chi</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_chi" step="1" value="0" />
+    						<input type="hidden" name="attr_chi_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_chi_rating" value="@{chi_rating_store}" disabled="true" title="1/10 of Chi score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_chi_stat_mod" disabled="true" value="@{temperence_rating_store}+@{temperence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_chi_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Chi_Check" value="&{template:default} {{@{character_name}}} {{name=Chi Check}} {{Result=[[2d10+@{chi_rating}+@{chi_stat_mod}+@{chi_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_chi_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Dodge</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_dodge" step="1" value="0" />
+    						<input type="hidden" name="attr_dodge_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_dodge_rating" value="@{dodge_rating_store}" disabled="true" title="1/10 of Dodge score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_dodge_stat_mod" disabled="true" value="floor((@{acuity_rating_store}+@{acuity_mod}+@{current_speed}+@{deftness_rating_store}+@{deftness_mod})/3)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_dodge_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Dodge_Check" value="&{template:default} {{@{character_name}}} {{name=Dodge Check}} {{Result=[[2d10+@{dodge_rating}+@{dodge_stat_mod}+@{dodge_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_dodge_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Mounted Combat</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_mounted_combat" step="1" value="0" />
+    						<input type="hidden" name="attr_mounted_combat_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_mounted_combat_rating" value="@{mounted_combat_rating_store}" disabled="true" title="1/10 of Mounted Combat score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_mounted_combat_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_mounted_combat_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Mounted_Combat_Check" value="&{template:default} {{@{character_name}}} {{name=Mounted Combat Check}} {{Result=[[2d10+@{mounted_combat_rating}+@{mounted_combat_stat_mod}+@{mounted_combat_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_mounted_combat_masteries_checked" >
+    					</div>
+    				</div>
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Provoke</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_provoke" step="1" value="0" />
+    						<input type="hidden" name="attr_provoke_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_provoke_rating" value="@{provoke_rating_store}" disabled="true" title="1/10 of Provoke score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_provoke_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{magnetism_rating_store}+@{magnetism_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_provoke_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Provoke_Check" value="&{template:default} {{@{character_name}}} {{name=Provoke Check}} {{Result=[[2d10+@{provoke_rating}+@{provoke_stat_mod}+@{provoke_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_provoke_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Unarmed Throw</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_unarmed_throw" step="1" value="0" />
+    						<input type="hidden" name="attr_unarmed_throw_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_unarmed_throw_rating" value="@{unarmed_throw_rating_store}" disabled="true" title="1/10 of Unarmed Throw score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_unarmed_throw_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{strength_rating_store}+@{strength_mod}+@{deftness_rating_store}+@{deftness_mod})/3)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_unarmed_throw_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Unarmed_Throw_Check" value="&{template:default} {{@{character_name}}} {{name=Unarmed Throw Check}} {{Result=[[2d10+@{unarmed_throw_rating}+@{unarmed_throw_stat_mod}+@{unarmed_throw_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_unarmed_throw_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Unarmed Strike</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_unarmed_strike" step="1" value="0" />
+    						<input type="hidden" name="attr_unarmed_strike_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_unarmed_strike_rating" value="@{unarmed_strike_rating_store}" disabled="true" title="1/10 of Unarmed Strike score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_unarmed_strike_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{strength_rating_store}+@{strength_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_unarmed_strike_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Unarmed_Strike_Check" value="&{template:default} {{@{character_name}}} {{name=Unarmed Strike Check}} {{Result=[[2d10+@{unarmed_strike_rating}+@{unarmed_strike_stat_mod}+@{unarmed_strike_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_unarmed_strike_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Grapple</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_grapple" step="1" value="0" />
+    						<input type="hidden" name="attr_grapple_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_grapple_rating" value="@{grapple_rating_store}" disabled="true" title="1/10 of Grapple score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_grapple_stat_mod" disabled="true" value="floor((@{deftness_rating_store}+@{deftness_mod}+@{strength_rating_store}+@{strength_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_grapple_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Grapple_Check" value="&{template:default} {{@{character_name}}} {{name=Grapple Check}} {{Result=[[2d10+@{grapple_rating}+@{grapple_stat_mod}+@{grapple_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_grapple_masteries_checked" >
+    					</div>
+    				</div>	
+				</div>
+				<div class="sheet-col-1-2">
+					<div class="sheet-row sheet-sub-header">
+						<div class="sheet-col-1-4 sheet-center sheet-small-label">Combat Skill (Weapon)</div>
+						<div class="sheet-col-1-9 sheet-small-label">Score &nbsp;</div>
+						<div class="sheet-col-1-9 sheet-small-label">Rating &nbsp;</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Stat Mod</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Mod</div>
+						<div class="sheet-col-1-10 sheet-center sheet-small-label">Check</div>
+						<div class="sheet-col-1-12  sheet-center sheet-small-label">Masteries</div>
+					</div>
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Fencing, sm Blades</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_fencing_small" step="1" value="0" />
+    						<input type="hidden" name="attr_fencing_small_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_fencing_small_rating" value="@{fencing_small_rating_store}" disabled="true" title="1/10 of Fencing, sm Blades score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_fencing_small_stat_mod" disabled="true" value="@{strength_rating_store}+@{strength_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_fencing_small_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Fencing_sm_Blades_Check" value="&{template:default} {{@{character_name}}} {{name=Fencing, sm Blades Check}} {{Result=[[2d10+@{fencing_small_rating}+@{fencing_small_stat_mod}+@{fencing_small_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_fencing_small_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Fencing, lg Blades</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_fencing_large" step="1" value="0" />
+    						<input type="hidden" name="attr_fencing_large_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_fencing_large_rating" value="@{fencing_large_rating_store}" disabled="true" title="1/10 of Fencing, lg Blades score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_fencing_large_stat_mod" disabled="true" value="@{strength_rating_store}+@{strength_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_fencing_large_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Fencing_Large_Check" value="&{template:default} {{@{character_name}}} {{name=Fencing, lg Blades Check}} {{Result=[[2d10+@{fencing_large_rating}+@{fencing_large_stat_mod}+@{fencing_large_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_fencing_large_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Archery</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_archery" step="1" value="0" />
+    						<input type="hidden" name="attr_archery_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_archery_rating" value="@{archery_rating_store}" disabled="true" title="1/10 of Archery score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_archery_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{acuity_rating_store}+@{acuity_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_archery_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Archery_Check" value="&{template:default} {{@{character_name}}} {{name=Archery Check}} {{Result=[[2d10+@{archery_rating}+@{archery_stat_mod}+@{archery_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_archery_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Bludgeon</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_bludgeon" step="1" value="0" />
+    						<input type="hidden" name="attr_bludgeon_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_bludgeon_rating" value="@{bludgeon_rating_store}" disabled="true" title="1/10 of Bludgeon score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_bludgeon_stat_mod" disabled="true" value="@{strength_rating_store}+@{strength_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_bludgeon_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Bludgeon_Check" value="&{template:default} {{@{character_name}}} {{name=Bludgeon Check}} {{Result=[[2d10+@{bludgeon_rating}+@{bludgeon_stat_mod}+@{bludgeon_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_bludgeon_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Crossbow</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_crossbow" step="1" value="0" />
+    						<input type="hidden" name="attr_crossbow_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_crossbow_rating" value="@{crossbow_rating_store}" disabled="true" title="1/10 of Crossbow score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_crossbow_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{acuity_rating_store}+@{acuity_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_crossbow_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Crossbow_Check" value="&{template:default} {{@{character_name}}} {{name=Crossbow Check}} {{Result=[[2d10+@{crossbow_rating}+@{crossbow_stat_mod}+@{crossbow_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_crossbow_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Net</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_net" step="1" value="0" />
+    						<input type="hidden" name="attr_net_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_net_rating" value="@{net_rating_store}" disabled="true" title="1/10 of Net score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_net_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{strength_rating_store}+@{strength_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_net_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Net_Check" value="&{template:default} {{@{character_name}}} {{name=Net Check}} {{Result=[[2d10+@{net_rating}+@{net_stat_mod}+@{net_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_net_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Polearm</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_polearm" step="1" value="0" />
+    						<input type="hidden" name="attr_polearm_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_polearm_rating" value="@{polearm_rating_store}" disabled="true" title="1/10 of Polearm score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_polearm_stat_mod" disabled="true" value="@{strength_rating_store}+@{strength_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_polearm_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Polearm_Check" value="&{template:default} {{@{character_name}}} {{name=Polearm Check}} {{Result=[[2d10+@{polearm_rating}+@{polearm_stat_mod}+@{polearm_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_polearm_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Whip</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_whip" step="1" value="0" />
+    						<input type="hidden" name="attr_whip_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_whip_rating" value="@{whip_rating_store}" disabled="true" title="1/10 of Whip score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_whip_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{strength_rating_store}+@{strength_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_whip_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Whip_Check" value="&{template:default} {{@{character_name}}} {{name=Whip Check}} {{Result=[[2d10+@{whip_rating}+@{whip_stat_mod}+@{whip_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_whip_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Sling</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_sling" step="1" value="0" />
+    						<input type="hidden" name="attr_sling_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_sling_rating" value="@{sling_rating_store}" disabled="true" title="1/10 of Sling score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_sling_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{strength_rating_store}+@{strength_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_sling_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Sling_Check" value="&{template:default} {{@{character_name}}} {{name=Sling Check}} {{Result=[[2d10+@{sling_rating}+@{sling_stat_mod}+@sling_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_sling_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Shield</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_shield" step="1" value="0" />
+    						<input type="hidden" name="attr_shield_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_shield_rating" value="@{shield_rating_store}" disabled="true" title="1/10 of Shield score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_shield_stat_mod" disabled="true" value="@{strength_rating_store}+@{strength_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_shield_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Shield_Check" value="&{template:default} {{@{character_name}}} {{name=Shield Check}} {{Result=[[2d10+@{shield_rating}+@{shield_stat_mod}+@{shield_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_shield_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Thrown Weapon</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_thrown_weapon" step="1" value="0" />
+    						<input type="hidden" name="attr_thrown_weapon_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_thrown_weapon_rating" value="@{thrown_weapon_rating_store}" disabled="true" title="1/10 of Thrown Weapon score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_thrown_weapon_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{acuity_rating_store}+@{acuity_mod}+@{strength_rating_store}+@{strength_mod})/3)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_thrown_weapon_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Thrown_Weapon_Check" value="&{template:default} {{@{character_name}}} {{name=Thrown Weapon Check}} {{Result=[[2d10+@{thrown_weapon_rating}+@{thrown_weapon_stat_mod}+@{thrown_weapon_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_thrown_weapon_masteries_checked" >
+    					</div>
+    				</div>	
+				</div>
+			</div>
+			<hr />
+			<div class="sheet-row">
+				<div class="sheet-col-1-2 sheet-padr">
+					<div class="sheet-row sheet-sub-header">
+						<div class="sheet-col-1-4 sheet-center sheet-small-label">Knowledge Skill</div>
+						<div class="sheet-col-1-9 sheet-small-label">Score &nbsp;</div>
+						<div class="sheet-col-1-9 sheet-small-label">Rating &nbsp;</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Stat Mod</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Mod</div>
+						<div class="sheet-col-1-10 sheet-center sheet-small-label">Check</div>
+						<div class="sheet-col-1-12  sheet-center sheet-small-label">Masteries</div>
+					</div>
+					<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Alchemical Lore</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_alchemical_lore" step="1" value="0" />
+    						<input type="hidden" name="attr_alchemical_lore_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_alchemical_lore_rating" value="@{alchemical_lore_rating_store}" disabled="true" title="1/10 of Alchemical Lore score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_alchemical_lore_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_alchemical_lore_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Alchemical_Lore_Check" value="&{template:default} {{@{character_name}}} {{name=Alchemical Lore Check}} {{Result=[[2d10+@{alchemical_lore_rating}+@{alchemical_lore_stat_mod}+@{alchemical_lore_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_alchemical_lore_masteries_checked" >
+    					</div>
+    				</div>	
+				    <div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Animal Lore</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_animal_lore" step="1" value="0" />
+    						<input type="hidden" name="attr_animal_lore_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_animal_lore_rating" value="@{animal_lore_rating_store}" disabled="true" title="1/10 of Animal Lore score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_animal_lore_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_animal_lore_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Animal_Lore_Check" value="&{template:default} {{@{character_name}}} {{name=Animal Lore Check}} {{Result=[[2d10+@{animal_lore_rating}+@{animal_lore_stat_mod}+@{animal_lore_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_animal_lore_masteries_checked" >
+    					</div>
+    				</div>	
+   				    <div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Magical Lore</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_magical_lore" step="1" value="0" />
+    						<input type="hidden" name="attr_magical_lore_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_magical_lore_rating" value="@{magical_lore_rating_store}" disabled="true" title="1/10 of Magical Lore score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_magical_lore_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_magical_lore_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Magical_Lore_Check" value="&{template:default} {{@{character_name}}} {{name=Magical Lore Check}} {{Result=[[2d10+@{magical_lore_rating}+@{magical_lore_stat_mod}+@{magical_lore_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_magical_lore_masteries_checked" >
+    					</div>
+    				</div>	
+				    <div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Medical Lore</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_medical_lore" step="1" value="0" />
+    						<input type="hidden" name="attr_medical_lore_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_medical_lore_rating" value="@{medical_lore_rating_store}" disabled="true" title="1/10 of Medical Lore score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_medical_lore_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_medical_lore_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Medical_Lore_Check" value="&{template:default} {{@{character_name}}} {{name=Medical Lore Check}} {{Result=[[2d10+@{medical_lore_rating}+@{medical_lore_stat_mod}+@{medical_lore_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_medical_lore_masteries_checked" >
+    					</div>
+    				</div>	
+				    <div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Mineral Lore</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_mineral_lore" step="1" value="0" />
+    						<input type="hidden" name="attr_mineral_lore_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_mineral_lore_rating" value="@{mineral_lore_rating_store}" disabled="true" title="1/10 of Mineral Lore score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_mineral_lore_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_mineral_lore_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Mineral_Lore_Check" value="&{template:default} {{@{character_name}}} {{name=Mineral Lore Check}} {{Result=[[2d10+@{mineral_lore_rating}+@{mineral_lore_stat_mod}+@{mineral_lore_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_mineral_lore_masteries_checked" >
+    					</div>
+    				</div>	
+				    <div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Poison Lore</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_poison_lore" step="1" value="0" />
+    						<input type="hidden" name="attr_poison_lore_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_poison_lore_rating" value="@{poison_lore_rating_store}" disabled="true" title="1/10 of Poison Lore score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_poison_lore_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_poison_lore_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Poison_Lore_Check" value="&{template:default} {{@{character_name}}} {{name=Poison Lore Check}} {{Result=[[2d10+@{poison_lore_rating}+@{poison_lore_stat_mod}+@{poison_lore_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_poison_lore_masteries_checked" >
+    					</div>
+    				</div>	
+				    <div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Read/Write Thapean</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_read_write_thapean" step="1" value="69" />
+    						<input type="hidden" name="attr_read_write_thapean_rating_store" value="6" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_read_write_thapean_rating" value="@{read_write_thapean_rating_store}" disabled="true" title="1/10 of Read/Write Thapean score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_read_write_thapean_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_read_write_thapean_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Read_Write_Thapean_Check" value="&{template:default} {{@{character_name}}} {{name=Read/Write Thapean Check}} {{Result=[[2d10+@{read_write_thapean_rating}+@{read_write_thapean_stat_mod}+@{read_write_thapean_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_read_write_thapean_masteries_checked" >
+    					</div>
+    				</div>	
+				    <div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Read/Write Language2</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_read_write_language2" step="1" value="0" />
+    						<input type="hidden" name="attr_read_write_language2_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_read_write_language2_rating" value="@{read_write_language2_rating_store}" disabled="true" title="1/10 of Read/Write Language2 score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_read_write_language2_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_read_write_language2_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Read_Write_Language2_Check" value="&{template:default} {{@{character_name}}} {{name=Read/Write Language2 Check}} {{Result=[[2d10+@{read_write_language2_rating}+@{read_write_language2_stat_mod}+@{read_write_language2_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_read_write_language2_masteries_checked" >
+    					</div>
+    				</div>	
+				    <div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Speak Thapean</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_speak_thapean" step="1" value="29" />
+    						<input type="hidden" name="attr_speak_thapean_rating_store" value="2" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_speak_thapean_rating" value="@{speak_thapean_rating_store}" disabled="true" title="1/10 of Speak Thapean score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_speak_thapean_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_speak_thapean_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Speak_Thapean_Check" value="&{template:default} {{@{character_name}}} {{name=Speak Thapean Check}} {{Result=[[2d10+@{speak_thapean_rating}+@{speak_thapean_stat_mod}+@{speak_thapean_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_speak_thapean_masteries_checked" >
+    					</div>
+    				</div>	
+				    <div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Speak Language2</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_speak_language2" step="1" value="0" />
+    						<input type="hidden" name="attr_speak_language2_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_speak_language2_rating" value="@{speak_language2_rating_store}" disabled="true" title="1/10 of Speak Language2 score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_speak_language2_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_speak_language2_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Speak_Language2_Check" value="&{template:default} {{@{character_name}}} {{name=Speak Language2 Check}} {{Result=[[2d10+@{speak_language2_rating}+@{speak_language2_stat_mod}+@{speak_language2_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_speak_language2_masteries_checked" >
+    					</div>
+    				</div>	
+					<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Weapon Lore</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_weapon_lore" step="1" value="0" />
+    						<input type="hidden" name="attr_weapon_lore_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_weapon_lore_rating" value="@{weapon_lore_rating_store}" disabled="true" title="1/10 of Weapon Lore score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_weapon_lore_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_weapon_lore_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Weapon_Lore_Check" value="&{template:default} {{@{character_name}}} {{name=Weapon Lore Check}} {{Result=[[2d10+@{weapon_lore_rating}+@{weapon_lore_stat_mod}+@{weapon_lore_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_weapon_lore_masteries_checked" >
+    					</div>
+    				</div>	
+				</div>
+				<div class="sheet-col-1-2">
+					<div class="sheet-row sheet-sub-header">
+						<div class="sheet-col-1-4 sheet-center sheet-small-label">General Skill</div>
+						<div class="sheet-col-1-9 sheet-small-label">Score &nbsp;</div>
+						<div class="sheet-col-1-9 sheet-small-label">Rating &nbsp;</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Stat Mod</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Mod</div>
+						<div class="sheet-col-1-10 sheet-center sheet-small-label">Check</div>
+						<div class="sheet-col-1-12  sheet-center sheet-small-label">Masteries</div>
+					</div>
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Acrobatics</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_acrobatics" step="1" value="0" />
+    						<input type="hidden" name="attr_acrobatics_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_acrobatics_rating" value="@{acrobatics_rating_store}" disabled="true" title="1/10 of Acrobatics score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_acrobatics_stat_mod" disabled="true" value="floor((@{deftness_rating_store}+@{deftness_mod}+@{valor_rating_store}+@{valor_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_acrobatics_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Acrobatics_Check" value="&{template:default} {{@{character_name}}} {{name=Acrobatics Check}} {{Result=[[2d10+@{acrobatics_rating}+@{acrobatics_stat_mod}+@{acrobatics_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_acrobatics_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Awareness</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_awareness" step="1" value="0" />
+    						<input type="hidden" name="attr_awareness_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_awareness_rating" value="@{awareness_rating_store}" disabled="true" title="1/10 of Awareness score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_awareness_stat_mod" disabled="true" value="@{acuity_rating_store}+@{acuity_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_awareness_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Awareness_Check" value="&{template:default} {{@{character_name}}} {{name=Awareness Check}} {{Result=[[2d10+@{awareness_rating}+@{awareness_stat_mod}+@{awareness_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_awareness_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Climb</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_climb" step="1" value="0" />
+    						<input type="hidden" name="attr_climb_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_climb_rating" value="@{climb_rating_store}" disabled="true" title="1/10 of Climb score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_climb_stat_mod" disabled="true" value="floor((@{strength_rating_store}+@{strength_mod}+@{valor_rating_store}+@{valor_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_climb_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Climb_Check" value="&{template:default} {{@{character_name}}} {{name=Climb Check}} {{Result=[[2d10+@{climb_rating}+@{climb_stat_mod}+@{climb_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_climb_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Craft</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_craft" step="1" value="0" />
+    						<input type="hidden" name="attr_craft_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_craft_rating" value="@{craft_rating_store}" disabled="true" title="1/10 of Craft score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_craft_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{temperence_rating_store}+@{temperence_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_craft_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Craft_Check" value="&{template:default} {{@{character_name}}} {{name=Craft Check}} {{Result=[[2d10+@{craft_rating}+@{craft_stat_mod}+@{craft_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_craft_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Entertaining</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_entertaining" step="1" value="0" />
+    						<input type="hidden" name="attr_entertaining_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_entertaining_rating" value="@{entertaining_rating_store}" disabled="true" title="1/10 of Entertaining score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_entertaining_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{appearance_rating_store}+@{appearance_mod}+@{magnetism_rating_store}+@{magnetism_mod})/3)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_entertaining_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Entertaining_Check" value="&{template:default} {{@{character_name}}} {{name=Entertaining Check}} {{Result=[[2d10+@{entertaining_rating}+@{entertaining_stat_mod}+@{entertaining_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_entertaining_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Influence</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_influence" step="1" value="0" />
+    						<input type="hidden" name="attr_influence_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_influence_rating" value="@{influence_rating_store}" disabled="true" title="1/10 of Influence score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_influence_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{appearance_rating_store}+@{appearance_mod}+@{magnetism_rating_store}+@{magnetism_mod})/3)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_influence_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Influence_Check" value="&{template:default} {{@{character_name}}} {{name=Influence Check}} {{Result=[[2d10+@{influence_rating}+@{influence_stat_mod}+@{influence_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_influence_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Meditate</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_meditate" step="1" value="0" />
+    						<input type="hidden" name="attr_meditate_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_meditate_rating" value="@{meditate_rating_store}" disabled="true" title="1/10 of Meditate score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_meditate_stat_mod" disabled="true" value="@{temperence_rating_store}+@{temperence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_meditate_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Meditate_Check" value="&{template:default} {{@{character_name}}} {{name=Meditate Check}} {{Result=[[2d10+@{meditate_rating}+@{meditate_stat_mod}+@{meditate_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_meditate_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Physical Conditioning</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_physical_conditioning" step="1" value="0" />
+    						<input type="hidden" name="attr_physical_conditioning_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_physical_conditioning_rating" value="@{physical_conditioning_rating_store}" disabled="true" title="1/10 of Physical Conditioning score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_physical_conditioning_stat_mod" disabled="true" value="@{stamina_rating_store}+@{stamina_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_physical_conditioning_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Physical_Conditioning_Check" value="&{template:default} {{@{character_name}}} {{name=Physical Conditioning Check}} {{Result=[[2d10+@{physical_conditioning_rating}+@{physical_conditioning_stat_mod}+@{physical_conditioning_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_physical_conditioning_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Percussion Instruments</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_percussion_instruments" step="1" value="0" />
+    						<input type="hidden" name="attr_percussion_instruments_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_percussion_instruments_rating" value="@{percussion_instruments_rating_store}" disabled="true" title="1/10 of Percussion Instruments score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_percussion_instruments_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{deftness_rating_store}+@{deftness_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_percussion_instruments_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Percussion_Instruments_Check" value="&{template:default} {{@{character_name}}} {{name=Percussion Instruments Check}} {{Result=[[2d10+@{percussion_instruments_rating}+@{percussion_instruments_stat_mod}+@{percussion_instruments_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_percussion_instruments_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">String Instruments</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_string_instruments" step="1" value="0" />
+    						<input type="hidden" name="attr_string_instruments_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_string_instruments_rating" value="@{string_instruments_rating_store}" disabled="true" title="1/10 of String Instruments score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_string_instruments_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{deftness_rating_store}+@{deftness_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_string_instruments_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_String_Instruments_Check" value="&{template:default} {{@{character_name}}} {{name=String Instruments Check}} {{Result=[[2d10+@{string_instruments_rating}+@{string_instruments_stat_mod}+@{string_instruments_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_string_instruments_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Wind Instruments</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_wind_instruments" step="1" value="0" />
+    						<input type="hidden" name="attr_wind_instruments_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_wind_instruments_rating" value="@{wind_instruments_rating_store}" disabled="true" title="1/10 of Wind Instruments score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_wind_instruments_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{deftness_rating_store}+@{deftness_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_wind_instruments_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Wind_Instruments_Check" value="&{template:default} {{@{character_name}}} {{name=Wind Instruments Check}} {{Result=[[2d10+@{wind_instruments_rating}+@{wind_instruments_stat_mod}+@{wind_instruments_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_wind_instruments_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Spell Retention</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_spell_retention" step="1" value="0" />
+    						<input type="hidden" name="attr_spell_retention_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_spell_retention_rating" value="@{spell_retention_rating_store}" disabled="true" title="1/10 of Spell Retention score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_spell_retention_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_spell_retention_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Spell_Retention_Check" value="&{template:default} {{@{character_name}}} {{name=Spell Retention Check}} {{Result=[[2d10+@{spell_retention_rating}+@{spell_retention_stat_mod}+@{spell_retention_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_spell_retention_masteries_checked" >
+    					</div>
+    				</div>	
+			    </div>
+			</div>
+			<hr/>
+			<div class="sheet-row">
+				<div class="sheet-col-1-2 sheet-padr">
+					<div class="sheet-row sheet-sub-header">
+						<div class="sheet-col-1-4 sheet-center sheet-small-label">Subterfuge Skill</div>
+						<div class="sheet-col-1-9 sheet-small-label">Score &nbsp;</div>
+						<div class="sheet-col-1-9 sheet-small-label">Rating &nbsp;</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Stat Mod</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Mod</div>
+						<div class="sheet-col-1-10 sheet-center sheet-small-label">Check</div>
+						<div class="sheet-col-1-12  sheet-center sheet-small-label">Masteries</div>
+					</div>
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Contortion</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_contortion" step="1" value="0" />
+    						<input type="hidden" name="attr_contortion_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_contortion_rating" value="@{contortion_rating_store}" disabled="true" title="1/10 of Contortion score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_contortion_stat_mod" disabled="true" value="@{deftness_rating_store}+@{deftness_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_contortion_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Contortion_Check" value="&{template:default} {{@{character_name}}} {{name=Contortion Check}} {{Result=[[2d10+@{contortion_rating}+@{contortion_stat_mod}+@{contortion_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_contortion_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Disguise</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_disguise" step="1" value="0" />
+    						<input type="hidden" name="attr_disguise_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_disguise_rating" value="@{disguise_rating_store}" disabled="true" title="1/10 of Disguise score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_disguise_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{deftness_rating_store}+@{deftness_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_disguise_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Disguise_Check" value="&{template:default} {{@{character_name}}} {{name=Disguise Check}} {{Result=[[2d10+@{disguise_rating}+@{disguise_stat_mod}+@{disguise_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_disguise_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Nimble Hands</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_nimble_hands" step="1" value="0" />
+    						<input type="hidden" name="attr_nimble_hands_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_nimble_hands_rating" value="@{nimble_hands_rating_store}" disabled="true" title="1/10 of Nimble Hands score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_nimble_hands_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{deftness_rating_store}+@{deftness_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_nimble_hands_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Nimble_Hands_Check" value="&{template:default} {{@{character_name}}} {{name=Nimble Hands Check}} {{Result=[[2d10+@{nimble_hands_rating}+@{nimble_hands_stat_mod}+@{nimble_hands_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_nimble_hands_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Pick Lock</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_pick_lock" step="1" value="0" />
+    						<input type="hidden" name="attr_pick_lock_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_pick_lock_rating" value="@{pick_lock_rating_store}" disabled="true" title="1/10 of Pick Lock score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_pick_lock_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{acuity_rating_store}+@{acuity_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_pick_lock_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Pick_Lock_Check" value="&{template:default} {{@{character_name}}} {{name=Pick Lock Check}} {{Result=[[2d10+@{pick_lock_rating}+@{pick_lock_stat_mod}+@{pick_lock_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_pick_lock_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Prowling</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_prowling" step="1" value="0" />
+    						<input type="hidden" name="attr_prowling_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_prowling_rating" value="@{prowling_rating_store}" disabled="true" title="1/10 of Prowling score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_prowling_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{deftness_rating_store}+@{deftness_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_prowling_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Prowling_Check" value="&{template:default} {{@{character_name}}} {{name=Prowling Check}} {{Result=[[2d10+@{prowling_rating}+@{prowling_stat_mod}+@{prowling_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_prowling_masteries_checked" >
+    					</div>
+    				</div>	
+				</div>
+				<div class="sheet-col-1-2">
+					<div class="sheet-row sheet-sub-header">
+						<div class="sheet-col-1-4 sheet-center sheet-small-label">Outdoor Skill</div>
+						<div class="sheet-col-1-9 sheet-small-label">Score &nbsp;</div>
+						<div class="sheet-col-1-9 sheet-small-label">Rating &nbsp;</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Stat Mod</div>
+						<div class="sheet-col-1-9 sheet-center sheet-small-label">Mod</div>
+						<div class="sheet-col-1-10 sheet-center sheet-small-label">Check</div>
+						<div class="sheet-col-1-12  sheet-center sheet-small-label">Masteries</div>
+					</div>
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Camouflage</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_camouflage" step="1" value="0" />
+    						<input type="hidden" name="attr_camouflage_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_camouflage_rating" value="@{camouflage_rating_store}" disabled="true" title="1/10 of Camouflage score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_camouflage_stat_mod" disabled="true" value="@{intelligence_rating_store}+@{intelligence_mod}" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_camouflage_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Camouflage_Check" value="&{template:default} {{@{character_name}}} {{name=Camouflage Check}} {{Result=[[2d10+@{camouflage_rating}+@{camouflage_stat_mod}+@{camouflage_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_camouflage_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Outdoor Survival</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_outdoor_survival" step="1" value="0" />
+    						<input type="hidden" name="attr_outdoor_survival_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_outdoor_survival_rating" value="@{outdoor_survival_rating_store}" disabled="true" title="1/10 of Outdoor Survival score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_outdoor_survival_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{acuity_rating_store}+@{acuity_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_outdoor_survival_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Outdoor_Survival_Check" value="&{template:default} {{@{character_name}}} {{name=Outdoor Survival Check}} {{Result=[[2d10+@{outdoor_survival_rating}+@{outdoor_survival_stat_mod}+@{outdoor_survival_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_outdoor_survival_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Riding</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_riding" step="1" value="0" />
+    						<input type="hidden" name="attr_riding_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_riding_rating" value="@{riding_rating_store}" disabled="true" title="1/10 of Riding score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_riding_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{deftness_rating_store}+@{deftness_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_riding_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Riding_Check" value="&{template:default} {{@{character_name}}} {{name=Riding Check}} {{Result=[[2d10+@{riding_rating}+@{riding_stat_mod}+@{riding_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_riding_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Set Traps</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_set_traps" step="1" value="0" />
+    						<input type="hidden" name="attr_set_traps_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_set_traps_rating" value="@{set_traps_rating_store}" disabled="true" title="1/10 of Set Traps score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_set_traps_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{deftness_rating_store}+@{deftness_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_set_traps_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Set_Traps_Check" value="&{template:default} {{@{character_name}}} {{name=Set Traps Check}} {{Result=[[2d10+@{set_traps_rating}+@{set_traps_stat_mod}+@{set_traps_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_set_traps_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Swim</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_swim" step="1" value="0" />
+    						<input type="hidden" name="attr_swim_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_swim_rating" value="@{swim_rating_store}" disabled="true" title="1/10 of Swim score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_swim_stat_mod" disabled="true" value="floor((@{strength_rating_store}+@{strength_mod}+@{deftness_rating_store}+@{deftness_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_swim_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Swim_Check" value="&{template:default} {{@{character_name}}} {{name=Swim Check}} {{Result=[[2d10+@{swim_rating}+@{swim_stat_mod}+@{swim_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_swim_masteries_checked" >
+    					</div>
+    				</div>	
+    				<div class="sheet-row">
+    					<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-skill-name">Track</div>
+    					<div class="sheet-col-1-9">
+    						<input type="number" name="attr_track" step="1" value="0" />
+    						<input type="hidden" name="attr_track_rating_store" value="0" />
+    					</div>
+             			<div class="sheet-col-1-9 sheet-padr">
+    						<input type="number" name="attr_track_rating" value="@{track_rating_store}" disabled="true" title="1/10 of Track score, dropping any remainder"/>
+    					</div>
+    					<div class="sheet-col-1-9 sheet-padr">
+    						<input class="sheet-center" type="number" name="attr_track_stat_mod" disabled="true" value="floor((@{intelligence_rating_store}+@{intelligence_mod}+@{acuity_rating_store}+@{acuity_mod})/2)" step="1">
+    					</div>
+    					<div class="sheet-col-1-9 sheet-center">
+    						<input class="sheet-center" type="number" name="attr_track_mod" value="0" step="1">
+    					</div>
+    					<div class="sheet-col-1-10 sheet-center sheet-padb">
+    						<button type="roll" class="sheet-skill-roll sheet-small" name="roll_Track_Check" value="&{template:default} {{@{character_name}}} {{name=Track Check}} {{Result=[[2d10+@{track_rating}+@{track_stat_mod}+@{track_mod}]]}}"></button>
+    					</div>
+    					<div class="sheet-col-1-12 sheet-center">
+    						<input class="sheet-checkbox" type="checkbox" name="attr_track_masteries_checked" >
+    					</div>
+    				</div>	
+                </div>
+    		</div>
+    		<hr />
 
-    <!-- NAME SECTION -->
-    <div class="name section">
-        <div class="section-small flex-center">
-            <label>NAME: </label>
-            <input name="attr_character_name" type="text">
-        </div>
-        <div class="section-small flex-center">
-            <label>ORDER: </label>
-            <input name="attr_order" type="text">
-        </div>
-    </div>
-
-    <!-- MAIN STAT SECTION -->
-
-    <div class="stats section">
-
-        <div>
-            <button name="roll_actionrating" type="roll" value="&{template:default} {{name=Actionrating}} {{Result=[[d10+(@{speed_bonus})]]}} &{tracker}"><span>Action Rating</span></button>
-        </div>
-
-        <div class="stat-block flex-center">
-            <label>Strength</label>
-            <input name="attr_strength" type="number" value="">
-            <input type="number" name="attr_strength_bonus" value="floor((@{Strength}/10))" disabled="true" />
-            <!--      <span name="attr_strength_bonus"></span> -->
-            <button name="roll_strength" type="roll" value="&{template:default} {{name=Strength}} {{Result=[[2d10+(@{Strength_bonus})]]}}"></button>
-        </div>
-
-        <div class="stat-block flex-center">
-            <label>Stamina</label>
-            <input name="attr_stamina" type="number" value="">
-            <input type="number" name="attr_stamina_bonus" value="floor((@{Stamina}/10))" disabled="true" />
-            <!--      <span name="attr_stamina_bonus"></span> -->
-            <button name="roll_stamina" type="roll" value="&{template:default} {{name=Stamina}} {{Result=[[2d10+(@{Stamina_bonus})]]}}"></button>
-        </div>
-
-        <div class="stat-block flex-center">
-            <label>Speed</label>
-            <input name="attr_speed" type="number" value="">
-            <span name="attr_speed_bonus"></span>
-            <button name="roll_speed" type="roll" value="&{template:default} {{name=Speed}} {{Result=[[2d10+(@{Speed_bonus})]]}}"></button>
-        </div>
-
-        <div class="stat-block flex-center">
-            <label>Deftness</label>
-            <input name="attr_deftness" type="number" value="">
-            <span name="attr_deftness_bonus"></span>
-            <button name="roll_deftness" type="roll" value="&{template:default} {{name=Deftness}} {{Result=[[2d10+(@{Deftness_bonus})]]}}"></button>
-        </div>
-
-        <div class="stat-block flex-center">
-            <label>Appearance</label>
-            <input name="attr_appearance" type="number" value="">
-            <span name="attr_appearance_bonus"></span>
-            <button name="roll_appearance" type="roll" value="&{template:default} {{name=Appearance}} {{Result=[[2d10+(@{Appearance_bonus})]]}}"></button>
-        </div>
-
-        <div class="stat-block flex-center">
-            <label>Intelligence</label>
-            <input name="attr_intelligence" type="number" value="">
-            <span name="attr_intelligence_bonus"></span>
-            <button name="roll_intelligence" type="roll" value="&{template:default} {{name=Intelligence}} {{Result=[[d20+(@{Intelligence_bonus})]]}}"></button>
-        </div>
-
-        <div class="stat-block flex-center">
-            <label>Acuity</label>
-            <input name="attr_acuity" type="number" value="">
-            <span name="attr_acuity_bonus"></span>
-            <button name="roll_acuity" type="roll" value="&{template:default} {{name=Acuity}} {{Result=[[2d10+(@{acuity_bonus})]]}}"></button>
-        </div>
-
-        <div class="stat-block flex-center">
-            <label>Temperence</label>
-            <input name="attr_temperence" type="number" value="">
-            <span name="attr_temperence_bonus"></span>
-            <button name="roll_temperence" type="roll" value="&{template:default} {{name=Temperence}} {{Result=[[2d10+(@{temperence_bonus})]]}}"></button>
-        </div>
-
-        <div class="stat-block flex-center">
-            <label>Valor</label>
-            <input name="attr_valor" type="number" value="">
-            <span name="attr_valor_bonus"></span>
-            <button name="roll_valor" type="roll" value="&{template:default} {{name=Valor}} {{Result=[[2d10+(@{Valor_bonus})]]}}"></button>
-        </div>
-
-        <div class="stat-block flex-center">
-            <label>Magnetism</label>
-            <input name="attr_magnetism" type="number" value="">
-            <span name="attr_magnetism_bonus"></span>
-            <button name="roll_magnetism" type="roll" value="&{template:default} {{name=Magnetism}} {{Result=[[2d10+(@{Magnetism_bonus})]]}}"></button>
-        </div>
-
-        <div class="stat-block flex-center">
-            <label>Aspect</label>
-            <input name="attr_aspect" type="number" value="">
-            <span name="attr_aspect_bonus"></span>
-            <button name="roll_aspect" type="roll" value="&{template:default} {{name=Aspect}} {{Result=[[2d10+(@{Aspect_bonus})]]}}"></button>
-        </div>
+	    <!-- BACKGROUND SECTION -->
 
 
-        <div class="stat-block flex-center">
-            <label>Mana</label>
-            <input name="attr_mana" type="number" value="">
-            <span name="attr_mana_bonus"></span>
-            <button name="roll_mana" type="roll" value="&{template:default} {{name=Mana}} {{Result=[[2d10+(@{Mana_bonus})]]}}"></button>
-        </div>
+		<div class="sheet-section-background">
+		    
+		</div>
+		
+	    <!--  SECTION -->
 
-        <div class="stat-block flex-center">
-            <label>Psyche</label>
-            <input name="attr_psyche" type="number" value="">
-            <span name="attr_psyche_bonus"></span>
-            <button name="roll_psyche" type="roll" value="&{template:default} {{name=Psyche}} {{Result=[[2d10+(@{Psyche_bonus})]]}}"></button>
-        </div>
-    </div>
 
-    <!-- RESISTANCE/WEAKNESS/ADVANTAGE SECTION -->
-    <div class="resistance section flex-center">
-        <div>
-            <label>Resistance/</label>
-            <label>Weakness</label>
-            <hr>
-            <label>Advantage/</label>
-            <label>Disadvantage</label>
-        </div>
-        <div>
-            <input name="attr_resistance1" type="text">
-            <input name="attr_resistance2" type="text">
-            <input name="attr_resistance3" type="text">
-            <input name="attr_resistance4" type="text">
-            <input name="attr_resistance5" type="text">
-        </div>
-    </div>
+		<div class="sheet-section-class">
+		    
+		</div>
+		
+	    <!--  SECTION -->
 
-    <!-- BIO SECTION -->
-    <div class="bio section flex-center flex-middle flex-down">
-        <label>Bio</label>
-        <textarea name="attr_bio" placeholder="Bio"></textarea>
-    </div>
+		<div class="sheet-section-weapons">
+		    
+		</div>
+		
+	    <!--  SECTION -->
 
-    <!-- GOLD SECTION-->
-    <div class="gold section flex-center">
-        <label>Gold:</label>
-        <input name="attr_gold" type="number" value="10">
-    </div>
+		<div class="sheet-section-spellbook">
+		    
+		</div>
+		
+	    <!--  SECTION -->
 
-    <!-- LOAD SECTION -->
-    <div class="load section flex-center flex-middle flex-down">
-        <label>Load</label>
-        <span>
-          <input name="attr_attack_name" type="text" placeholder="Attack/Weapon Name"> 
-          <input name="attr_attack_bonus" type="number" value=""> 
-          <input name="attr_attack_damage" type="text" value="1d6" class="small">
-          <button name="roll_attack" type="roll" value="&{template:default} {{name=@{attack_name}}} {{Attack=[[d20+(@{attack_bonus})]]}} {{Damage=[[@{attack_damage}]]}}" class ="small"></button>
-        </span>
-        <textarea name="attr_load" placeholder="Load"></textarea>
-    </div>
+		<div class="sheet-section-inventory">
+		    
+		</div>
+		
+	    <!--  SECTION -->
 
-    <!-- SKILLED WITH SECTION -->
-    <div class="skilled section flex-center">
-        <label>Skilled with: </label>
-        <input name="attr_skilled_with" type="text">
-    </div>
+		<div class="sheet-section-armour">
+		    
+		</div>
+	</div>
 
-    <!-- ORDER SKILL SECTION -->
-    <div class="order-skills section flex-center flex-down">
-        <label>Order Skills</label>
-        <textarea name="attr_order_skills" placeholder="Order Skills"></textarea>
-    </div>
+	    <!-- FOOTER -->
 
+	<div class="sheet-row sheet-footer">
+		<div class="sheet-col-1 sheet-small-label sheet-center"><a href="https://1drv.ms/u/s!AgWtL7ssieylzFmjZuoiUWl8_sPP?e=j3jNBH" target="_blank">View BBERPG rules</a></div>
+	</div>
 </div>
+    
+    <!-- ---------------------------SHEET WORKERS----------------- -->
+    
+    <script type="text/worker">
+    
+    // const int = score => parseInt(score, 10) || 0;
+    
+    // Auto-calculates & updates 'Stat Bonus' based on changes to corresponding 'Base Stat',
+    // Attribute bonuses are equal to the tens and hundreds digits of the score
+    
+    // const stats = ["strength", "stamina", "speed", "deftness", "appearance", "intelligence", "acuity", "temperence", "valor", "magnetism", "aspect", "mana", "psyche"];
+    
+    on("change:strength", function() {
+        getAttrs(["strength"], function(values) {
+            setAttrs({ strength_rating_store: Math.trunc(values.strength/10) });
+        });
+    });
+    
+    on("change:stamina", function() {
+        getAttrs(["stamina"], function(values) {
+            setAttrs({ stamina_rating_store: Math.trunc(values.stamina/10) });
+        });
+    });
+    
+    on("change:speed change:speed_mod", function() {
+        var num_speed_total = 0;
+        var num_deftness_total = 0;
+        var num_valor_total = 0;
+        getAttrs(["speed"], function(values) {
+            setAttrs({ speed_rating_store: Math.trunc(values.speed/10) });
+            num_speed_total += Math.trunc(values.speed/10);
+        });
+        getAttrs(["speed_mod"], function(values) {
+            num_speed_total += parseInt(values.speed_mod);
+        });
+        getAttrs(["deftness"], function(values) {
+            num_deftness_total += Math.trunc(values.deftness/10);
+        });
+        getAttrs(["deftness_mod"], function(values) {
+            num_deftness_total += parseInt(values.deftness_mod);
+        });
+        getAttrs(["valor"], function(values) {
+            num_valor_total += Math.trunc(values.valor/10);
+        });
+        getAttrs(["valor_mod"], function(values) {
+            num_valor_total += parseInt(values.valor_mod);
+            setAttrs({ aggression_rating_store: Math.trunc((num_speed_total+num_deftness_total+num_valor_total)/3) });
+        });
+    });
+    
+    on("change:deftness change:deftness_mod", function() {
+        var num_speed_total = 0;
+        var num_deftness_total = 0;
+        var num_valor_total = 0;
+        getAttrs(["deftness"], function(values) {
+            setAttrs({ deftness_rating_store: Math.trunc(values.deftness/10) });
+            num_deftness_total += Math.trunc(values.deftness/10);
+        });
+        getAttrs(["speed_mod"], function(values) {
+            num_speed_total += parseInt(values.speed_mod);
+        });
+        getAttrs(["speed"], function(values) {
+            num_speed_total += Math.trunc(values.speed/10);
+        });
+        getAttrs(["deftness_mod"], function(values) {
+            num_deftness_total += parseInt(values.deftness_mod);
+        });
+        getAttrs(["valor"], function(values) {
+            num_valor_total += Math.trunc(values.valor/10);
+        });
+        getAttrs(["valor_mod"], function(values) {
+            num_valor_total += parseInt(values.valor_mod);
+            setAttrs({ aggression_rating_store: Math.trunc((num_speed_total+num_deftness_total+num_valor_total)/3) });
+        });
+    });
+    
+    on("change:appearance", function() {
+        getAttrs(["appearance"], function(values) {
+            setAttrs({ appearance_rating_store: Math.trunc(values.appearance/10) });
+        });
+    });
+    
+    on("change:intelligence", function() {
+        getAttrs(["intelligence"], function(values) {
+            setAttrs({ intelligence_rating_store: Math.trunc(values.intelligence/10) });
+        });
+    });
+    
+    on("change:acuity", function() {
+        getAttrs(["acuity"], function(values) {
+            setAttrs({ acuity_rating_store: Math.trunc(values.acuity/10) });
+        });
+    });
+    
+    on("change:temperence", function() {
+        getAttrs(["temperence"], function(values) {
+            setAttrs({ temperence_rating_store: Math.trunc(values.temperence/10) });
+        });
+    });
+    
+    on("change:valor change:valor_mod", function() {
+        var num_speed_total = 0;
+        var num_deftness_total = 0;
+        var num_valor_total = 0;
+        getAttrs(["valor"], function(values) {
+            setAttrs({ valor_rating_store: Math.trunc(values.valor/10) });
+            num_valor_total += Math.trunc(values.valor/10);
+        });
+        getAttrs(["speed_mod"], function(values) {
+            num_speed_total += parseInt(values.speed_mod);
+        });
+        getAttrs(["deftness"], function(values) {
+            num_deftness_total += Math.trunc(values.deftness/10);
+        });
+        getAttrs(["deftness_mod"], function(values) {
+            num_deftness_total += parseInt(values.deftness_mod);
+        });
+        getAttrs(["speed"], function(values) {
+            num_speed_total += Math.trunc(values.speed/10);
+        });
+        getAttrs(["valor_mod"], function(values) {
+            num_valor_total += parseInt(values.valor_mod);
+            setAttrs({ aggression_rating_store: Math.trunc((num_speed_total+num_deftness_total+num_valor_total)/3) });
+        });
+    });
+    
+    on("change:magnetism", function() {
+        getAttrs(["magnetism"], function(values) {
+            setAttrs({ magnetism_rating_store: Math.trunc(values.magnetism/10) });
+        });
+    });
+    
+    on("change:aspect", function() {
+        getAttrs(["aspect"], function(values) {
+            setAttrs({ aspect_rating_store: Math.trunc(values.aspect/10) });
+        });
+    });
+    
+    on("change:mana", function() {
+        getAttrs(["mana"], function(values) {
+            setAttrs({ mana_rating_store: Math.trunc(values.mana/10) });
+        });
+    });
+    
+    on("change:psyche", function() {
+        getAttrs(["psyche"], function(values) {
+            setAttrs({ psyche_rating_store: Math.trunc(values.psyche/10) });
+        });
+    });
+    
+    on("change:karma", function() {
+        getAttrs(["karma"], function(values) {
+            setAttrs({ karma_rating_store: Math.trunc(values.karma/10) });
+        });
+    });
+    
+    on("change:berserk", function() {
+        getAttrs(["berserk"], function(values) {
+            setAttrs({ berserk_rating_store: Math.trunc(values.berserk/10) });
+        });
+    });
 
-<!--
-    <input name="strength_bonus" type="hidden" value="0">
-    <input name="stamina_bonus" type="hidden" value="0">
-    <input name="speed_bonus" type="hidden" value="0">
-    <input name="deftness_bonus" type="hidden" value="0">
-    <input name="appearance_bonus" type="hidden" value="0">
-    <input name="intelligence_bonus" type="hidden" value="0">
-    <input name="acuity_bonus" type="hidden" value="0">
-    <input name="temperence_bonus" type="hidden" value="0">
-    <input name="valor_bonus" type="hidden" value="0">
-    <input name="magnetism_bonus" type="hidden" value="0">
-    <input name="aspect_bonus" type="hidden" value="0">
-    <input name="mana_bonus" type="hidden" value="0">
-    <input name="psyche_bonus" type="hidden" value="0"> 
-    -->
+    on("change:chi", function() {
+        getAttrs(["chi"], function(values) {
+            setAttrs({ chi_rating_store: Math.trunc(values.chi/10) });
+        });
+    });
 
-<!-- ---------------------------SHEET WORKERS----------------- -->
+    on("change:dodge", function() {
+        getAttrs(["dodge"], function(values) {
+            setAttrs({ dodge_rating_store: Math.trunc(values.dodge/10) });
+        });
+    });
 
-<script type="text/worker">
+    on("change:mounted_combat", function() {
+        getAttrs(["mounted_combat"], function(values) {
+            setAttrs({ mounted_combat_rating_store: Math.trunc(values.mounted_combat/10) });
+        });
+    });
 
-    // const int = score => parseInt(score, 10) || 0; // Auto-calculates & updates 'Stat Bonus' based on changes to corresponding 'Base Stat', // Attribute bonuses are equal to the tens and hundreds digits of the score // const stats = ["strength", "stamina",
-    "speed", "deftness", "appearance", "intelligence", "acuity", "temperence", "valor", "magnetism", "aspect", "mana", "psyche"]; // stats.forEach(stat => { // on(`change:${stat}`, function(){ // getAttrs([stat], function(values){ // stat_base = parseInt(values.stat);
-    // setAttrs({ // [`attr_${stat}_bonus`]: Math.floor(stat_base/10) // }); // setAttrs({ // [`${stat}_bonus`]: Math.floor(stat_base/10) // }); // }); // }); //}); on("change:acuity", function(){ getAttrs(["Acuity"], function(values){ setAttrs({ Acuity_bonus:
-    Math.floor(values.Acuity / 10) }); });
+    on("change:provoke", function() {
+        getAttrs(["provoke"], function(values) {
+            setAttrs({ provoke_rating_store: Math.trunc(values.provoke/10) });
+        });
+    });
 
-</script>
+    on("change:unarmed_throw", function() {
+        getAttrs(["unarmed_throw"], function(values) {
+            setAttrs({ unarmed_throw_rating_store: Math.trunc(values.unarmed_throw/10) });
+        });
+    });
+
+    on("change:unarmed_strike", function() {
+        getAttrs(["unarmed_strike"], function(values) {
+            setAttrs({ unarmed_strike_rating_store: Math.trunc(values.unarmed_strike/10) });
+        });
+    });
+
+    on("change:grapple", function() {
+        getAttrs(["grapple"], function(values) {
+            setAttrs({ grapple_rating_store: Math.trunc(values.grapple/10) });
+        });
+    });
+    
+    on("change:fencing_small", function() {
+        getAttrs(["fencing_small"], function(values) {
+            setAttrs({ fencing_small_rating_store: Math.trunc(values.fencing_small/10) });
+        });
+    });
+
+    on("change:fencing_large", function() {
+        getAttrs(["fencing_large"], function(values) {
+            setAttrs({ fencing_large_rating_store: Math.trunc(values.fencing_large/10) });
+        });
+    });
+    
+    on("change:archery", function() {
+        getAttrs(["archery"], function(values) {
+            setAttrs({ archery_rating_store: Math.trunc(values.archery/10) });
+        });
+    });
+
+    on("change:bludgeon", function() {
+        getAttrs(["bludgeon"], function(values) {
+            setAttrs({ bludgeon_rating_store: Math.trunc(values.bludgeon/10) });
+        });
+    });
+
+    on("change:crossbow", function() {
+        getAttrs(["crossbow"], function(values) {
+            setAttrs({ crossbow_rating_store: Math.trunc(values.crossbow/10) });
+        });
+    });
+
+    on("change:net", function() {
+        getAttrs(["net"], function(values) {
+            setAttrs({ net_rating_store: Math.trunc(values.net/10) });
+        });
+    });
+
+    on("change:polearm", function() {
+        getAttrs(["polearm"], function(values) {
+            setAttrs({ polearm_rating_store: Math.trunc(values.polearm/10) });
+        });
+    });
+
+    on("change:whip", function() {
+        getAttrs(["whip"], function(values) {
+            setAttrs({ whip_rating_store: Math.trunc(values.whip/10) });
+        });
+    });
+
+    on("change:sling", function() {
+        getAttrs(["sling"], function(values) {
+            setAttrs({ sling_rating_store: Math.trunc(values.sling/10) });
+        });
+    });
+
+    on("change:shield", function() {
+        getAttrs(["shield"], function(values) {
+            setAttrs({ shield_rating_store: Math.trunc(values.shield/10) });
+        });
+    });
+
+    on("change:thrown_weapon", function() {
+        getAttrs(["thrown_weapon"], function(values) {
+            setAttrs({ thrown_weapon_rating_store: Math.trunc(values.thrown_weapon/10) });
+        });
+    });
+
+    on("change:acrobatics", function() {
+        getAttrs(["acrobatics"], function(values) {
+            setAttrs({ acrobatics_rating_store: Math.trunc(values.acrobatics/10) });
+        });
+    });
+
+    on("change:awareness", function() {
+        getAttrs(["awareness"], function(values) {
+            setAttrs({ awareness_rating_store: Math.trunc(values.awareness/10) });
+        });
+    });
+
+    on("change:climb", function() {
+        getAttrs(["climb"], function(values) {
+            setAttrs({ climb_rating_store: Math.trunc(values.climb/10) });
+        });
+    });
+
+    on("change:craft", function() {
+        getAttrs(["craft"], function(values) {
+            setAttrs({ craft_rating_store: Math.trunc(values.craft/10) });
+        });
+    });
+
+    on("change:entertaining", function() {
+        getAttrs(["entertaining"], function(values) {
+            setAttrs({ entertaining_rating_store: Math.trunc(values.entertaining/10) });
+        });
+    });
+
+    on("change:influence", function() {
+        getAttrs(["influence"], function(values) {
+            setAttrs({ influence_rating_store: Math.trunc(values.influence/10) });
+        });
+    });
+
+    on("change:meditate", function() {
+        getAttrs(["meditate"], function(values) {
+            setAttrs({ meditate_rating_store: Math.trunc(values.meditate/10) });
+        });
+    });
+
+    on("change:physical_conditioning", function() {
+        getAttrs(["physical_conditioning"], function(values) {
+            setAttrs({ physical_conditioning_rating_store: Math.trunc(values.physical_conditioning/10) });
+        });
+    });
+
+    on("change:percussion_instrument", function() {
+        getAttrs(["percussion_instrument"], function(values) {
+            setAttrs({ percussion_instrument_rating_store: Math.trunc(values.percussion_instrument/10) });
+        });
+    });
+
+    on("change:string_instrument", function() {
+        getAttrs(["string_instrument"], function(values) {
+            setAttrs({ string_instrument_rating_store: Math.trunc(values.string_instrument/10) });
+        });
+    });
+
+    on("change:wind_instrument", function() {
+        getAttrs(["wind_instrument"], function(values) {
+            setAttrs({ wind_instrument_rating_store: Math.trunc(values.wind_instrument/10) });
+        });
+    });
+
+    on("change:spell_retention", function() {
+        getAttrs(["spell_retention"], function(values) {
+            setAttrs({ spell_retention_rating_store: Math.trunc(values.spell_retention/10) });
+        });
+    });
+
+    on("change:contortion", function() {
+        getAttrs(["contortion"], function(values) {
+            setAttrs({ contortion_rating_store: Math.trunc(values.contortion/10) });
+        });
+    });
+
+    on("change:disguise", function() {
+        getAttrs(["disguise"], function(values) {
+            setAttrs({ disguise_rating_store: Math.trunc(values.disguise/10) });
+        });
+    });
+
+    on("change:nimble_hands", function() {
+        getAttrs(["nimble_hands"], function(values) {
+            setAttrs({ nimble_hands_rating_store: Math.trunc(values.nimble_hands/10) });
+        });
+    });
+
+    on("change:pick_lock", function() {
+        getAttrs(["pick_lock"], function(values) {
+            setAttrs({ pick_lock_rating_store: Math.trunc(values.pick_lock/10) });
+        });
+    });
+
+    on("change:prowling", function() {
+        getAttrs(["prowling"], function(values) {
+            setAttrs({ prowling_rating_store: Math.trunc(values.prowling/10) });
+        });
+    });
+
+    on("change:alchemical_lore", function() {
+        getAttrs(["alchemical_lore"], function(values) {
+            setAttrs({ alchemical_lore_rating_store: Math.trunc(values.alchemical_lore/10) });
+        });
+    });
+
+    on("change:animal_lore", function() {
+        getAttrs(["animal_lore"], function(values) {
+            setAttrs({ animal_lore_rating_store: Math.trunc(values.animal_lore/10) });
+        });
+    });
+
+    on("change:magical_lore", function() {
+        getAttrs(["magical_lore"], function(values) {
+            setAttrs({ magical_lore_rating_store: Math.trunc(values.magical_lore/10) });
+        });
+    });
+
+    on("change:medical_lore", function() {
+        getAttrs(["medical_lore"], function(values) {
+            setAttrs({ medical_lore_rating_store: Math.trunc(values.medical_lore/10) });
+        });
+    });
+
+    on("change:mineral_lore", function() {
+        getAttrs(["mineral_lore"], function(values) {
+            setAttrs({ mineral_lore_rating_store: Math.trunc(values.mineral_lore/10) });
+        });
+    });
+
+    on("change:poison_lore", function() {
+        getAttrs(["poison_lore"], function(values) {
+            setAttrs({ poison_lore_rating_store: Math.trunc(values.poison_lore/10) });
+        });
+    });
+
+    on("change:read_write_thapean", function() {
+        getAttrs(["read_write_thapean"], function(values) {
+            setAttrs({ read_write_thapean_rating_store: Math.trunc(values.read_write_thapean/10) });
+        });
+    });
+
+    on("change:read_write_language2", function() {
+        getAttrs(["read_write_language2"], function(values) {
+            setAttrs({ read_write_language2_rating_store: Math.trunc(values.read_write_language2/10) });
+        });
+    });
+
+    on("change:speak_thapean", function() {
+        getAttrs(["speak_thapean"], function(values) {
+            setAttrs({ speak_thapean_rating_store: Math.trunc(values.speak_thapean/10) });
+        });
+    });
+
+    on("change:speak_language2", function() {
+        getAttrs(["speak_language2"], function(values) {
+            setAttrs({ speak_language2_rating_store: Math.trunc(values.speak_language2/10) });
+        });
+    });
+
+    on("change:weapon_lore", function() {
+        getAttrs(["weapon_lore"], function(values) {
+            setAttrs({ weapon_lore_rating_store: Math.trunc(values.weapon_lore/10) });
+        });
+    });
+
+    on("change:camouflage", function() {
+        getAttrs(["camouflage"], function(values) {
+            setAttrs({ camouflage_rating_store: Math.trunc(values.camouflage/10) });
+        });
+    });
+
+    on("change:outdoor_survival", function() {
+        getAttrs(["outdoor_survival"], function(values) {
+            setAttrs({ outdoor_survival_rating_store: Math.trunc(values.outdoor_survival/10) });
+        });
+    });
+
+    on("change:riding", function() {
+        getAttrs(["riding"], function(values) {
+            setAttrs({ riding_rating_store: Math.trunc(values.riding/10) });
+        });
+    });
+
+    on("change:set_trap", function() {
+        getAttrs(["set_trap"], function(values) {
+            setAttrs({ set_trap_rating_store: Math.trunc(values.set_trap/10) });
+        });
+    });
+
+    on("change:swim", function() {
+        getAttrs(["swim"], function(values) {
+            setAttrs({ swim_rating_store: Math.trunc(values.swim/10) });
+        });
+    });
+
+    on("change:track", function() {
+        getAttrs(["track"], function(values) {
+            setAttrs({ track_rating_store: Math.trunc(values.track/10) });
+        });
+    });
+
+
+    // on("sheet:compendium-drop", function() {
+    //     var default_attr = {};
+    //     default_attr["width"] = 70;
+    //     default_attr["height"] = 70;
+    //     // default_attr["bar1_value"] = 10;
+    //     // default_attr["bar1_max"] = 15;
+    //     setDefaultToken(default_attr);
+    // });
+    
+    </script>
+
+
+
+<!-- Roll Template -->
+
