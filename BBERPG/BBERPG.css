@@ -13,7 +13,7 @@
     padding: 5px 0px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    imag box-sizing: border-box;
 }
 
 
@@ -211,14 +211,15 @@
 /*** Custom Roll-Template Style  ***/
 
 .sheet-rolltemplate-custom .sheet-rt-card {
-    width: 95%;
-    background-color: #FFFFFF;
+    width: 100%;
+    background-color: inherit;
+    /* background-color: #FFFFFF; */
     font-size: 11px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     border: black 1px solid;
-    padding: 5px 0px;
+    padding: 0px 0px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -262,7 +263,7 @@
 }
 
 .sheet-rolltemplate-custom .sheet-rt-title {
-    font-size: 1.3em;
+    font-size: 1.1em;
 }
 
 
@@ -343,9 +344,10 @@
 
 /* More roll-template formatting */
 
-.sheet-rolltemplate-custom .sheet-row:nth-child(even) {
-    background-color: #E9EDEE;
-}
+
+/* .sheet-rolltemplate-custom .sheet-row:nth-child(even) {
+	background-color: #E9EDEE;
+} */
 
 .sheet-rolltemplate-custom .sheet-rt-key {
     font-weight: bold;
@@ -356,8 +358,8 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    max-width: 120px;
-    padding: 2px 2px 2px 0px;
+    /* max-width: 120px; */
+    padding: 2px 0px 2px 0px;
 }
 
 .sheet-rolltemplate-custom .sheet-rt-key-wide {
@@ -369,7 +371,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 2px 2px 2px 0px;
+    padding: 2px 0px 2px 0px;
 }
 
 .sheet-rolltemplate-custom .sheet-rt-value {
@@ -404,6 +406,23 @@
 
 .sheet-rolltemplate-custom .sheet-rt-value .sheet-no-roll-highlight .inlinerollresult .fullfail . .sheet-rolltemplate-custom .sheet-rt-value .sheet-no-roll-highlight .inlinerollresult .fullcrit {
     border: 0;
+}
+
+.sheet-rolltemplate-custom .sheet-main-content {
+    background-color: inherit;
+    background: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/Parchment.png?raw=true) no-repeat center;
+    position: relative;
+    background-size: cover;
+    border: 10px solid transparent;
+    padding: 2px;
+    border-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BorderFrame.png?raw=true) 7% round;
+}
+
+.sheet-rolltemplate-custom .sheet-main-content .sheet-row {
+    background-color: inherit;
+    border: 8px solid transparent;
+    padding: 0px;
+    border-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/textBoxParchment.png?raw=true) 15% round;
 }
 
 .sheet-rolltemplate-custom .sheet-main-content hr.sheet-roll {
@@ -490,21 +509,21 @@
 }
 
 .sheet-rolltemplate-custom .sheet-padl {
-    padding-left: 10px;
+    padding-left: 5px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 .sheet-rolltemplate-custom .sheet-padr {
-    padding-right: 10px;
+    padding-right: 5px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 .sheet-rolltemplate-custom .sheet-padt {
-    padding-top: 12px;
+    padding-top: 5px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
