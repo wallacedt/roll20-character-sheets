@@ -13,7 +13,7 @@
     padding: 5px 0px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    imag box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 
@@ -183,7 +183,7 @@
     font-size: 1em;
 }
 
-.sheet-rolltemplate-BBERPGDefault .sheet-rt-value .sheet-no-roll-highlight .inlinerollresult .fullfail . .sheet-rolltemplate-BBERPGDefault .sheet-rt-value .sheet-no-roll-highlight .inlinerollresult .fullcrit {
+.sheet-rolltemplate-BBERPGDefault .sheet-rt-value .sheet-no-roll-highlight .inlinerollresult .fullfail .sheet-rolltemplate-BBERPGDefault .sheet-rt-value .sheet-no-roll-highlight .inlinerollresult .fullcrit {
     border: 0;
 }
 
@@ -404,7 +404,7 @@
     font-size: 1em;
 }
 
-.sheet-rolltemplate-custom .sheet-rt-value .sheet-no-roll-highlight .inlinerollresult .fullfail . .sheet-rolltemplate-custom .sheet-rt-value .sheet-no-roll-highlight .inlinerollresult .fullcrit {
+.sheet-rolltemplate-custom .sheet-rt-value .sheet-no-roll-highlight .inlinerollresult .fullfail .sheet-rolltemplate-custom .sheet-rt-value .sheet-no-roll-highlight .inlinerollresult .fullcrit {
     border: 0;
 }
 
@@ -2494,6 +2494,13 @@ input.sheet-is-npc:checked+span.sheet-is-npc-tab::before {
 /* END player/npc button Settings */
 
 
+/* --------- collapsable section ------------- */
+
+.sheet-hider:not(:checked)+span+div {
+    display: none;
+}
+
+
 /* --------- Text ------------- */
 
 span.sheet-bold {
@@ -2571,9 +2578,10 @@ input[type="number"] {
 
 textarea {
     background-color: transparent;
-    width: 89%;
-    height: 70%;
     margin-right: 15px;
+    width: calc(100% - 10px);
+    height: 150px;
+    resize: none;
 }
 
 input[type="checkbox"].sheet-checkbox {
@@ -2588,7 +2596,7 @@ input[type="number"]:focus {
 }
 
 
-/* -----Hides up/down buttons on numberfields that don't need them ---*/
+/* ----- Hides up/down buttons on numberfields that don't need them ---*/
 
 input[type=number].sheet-ref::-webkit-inner-spin-button,
 input[type=number].sheet-ref::-webkit-outer-spin-button,
@@ -2615,6 +2623,50 @@ button[type="roll"]:not(.sheet-small) {
 
 button[type="roll"]:not(.sheet-small)::before {
     font-size: 1.4em;
+}
+
+button[type="action"] {
+    box-shadow: inset 0px 0px 14px -3px #f2fadc;
+    background: linear-gradient(to bottom, #dbe6c4 5%, #9ba892 100%);
+    background-color: #dbe6c4;
+    border-radius: 6px;
+    border: 1px solid #b2b8ad;
+    display: inline-block;
+    cursor: pointer;
+    color: #757d6f;
+    font-family: Arial;
+    font-size: 9px!important;
+    font-weight: bold;
+    padding: 6px 6px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ced9bf;
+}
+
+button[type="action"]:hover {
+    background: linear-gradient(to bottom, #9ba892 5%, #dbe6c4 100%);
+    background-color: #9ba892;
+}
+
+button[type="action"]:active {
+    position: relative;
+    top: 1px;
+}
+
+
+/* ------- Bordered Input Display ------- */
+
+div.sheet-bordered {
+    margin-top: 5px;
+    background-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BorderedParchmentDiffused.png?raw=true);
+    background-size: 80px 45px;
+    background-repeat: no-repeat;
+}
+
+div.sheet-bordered input[type=number] {
+    width: 75px;
+    margin-right: 5px;
+    background-color: transparent;
+    border: none;
 }
 
 
@@ -2882,10 +2934,10 @@ div.sheet-bio textarea {
 }
 
 
-/* GOLD SECTION */
+/* ------- Bordered Coin Inventory ---------*/
 
 div.sheet-gold {
-    grid-area: gold;
+    /* grid-area: gold; */
     background-image: url(https://github.com/wallacedt/roll20-character-sheets/blob/BBERPG/BBERPG/images/BBERPGblock1.jpg?raw=true);
     background-size: 140px 30px;
     background-repeat: no-repeat;
@@ -3159,7 +3211,7 @@ input.sheet-inventorytab2:checked~span.sheet-inventorytab2,
 input.sheet-inventorytab3:checked~span.sheet-inventorytab3,
 input.sheet-inventorytab4:checked~span.sheet-inventorytab4,
 input.sheet-inventorytab99:checked~span.sheet-inventorytab99 {
-    background: rgb(0, 158, 115);
+    background: rgb(36, 37, 37);
     color: white;
     border-radius: 4px;
 }
@@ -3176,8 +3228,8 @@ input.sheet-inventorytab {
 span.sheet-inventorytab {
     text-align: center;
     display: inline-block;
-    font-size: 13px;
-    background: rgb(86, 180, 233);
+    font-size: 12px;
+    background: rgb(45, 96, 126);
     color: white;
     font-weight: bold;
     border-radius: 4px;
@@ -3562,12 +3614,6 @@ span.sheet-spacer,
     text-align: center;
 }
 
-textarea {
-    width: calc(100% - 10px);
-    height: 150px;
-    resize: none;
-}
-
 .sheet-fluid-textarea {
     height: 100%;
 }
@@ -3581,7 +3627,7 @@ textarea {
 }
 
 .sheet-large-textarea {
-    height: 300px;
+    height: 180px;
 }
 
 h3 {
